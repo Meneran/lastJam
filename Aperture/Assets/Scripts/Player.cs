@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     private Vector3 stop = new Vector3(0, 0, 0);
     private bool horizontal, vertical;
@@ -11,12 +12,14 @@ public class Player : MonoBehaviour {
     private float saveTimer;
     private float timer;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         timer = saveTimer;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         timer -= Time.deltaTime;
         if (timer < 0)
         {
