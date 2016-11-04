@@ -3,15 +3,15 @@ using System.Collections;
 
 public class MapLoader : MonoBehaviour {
 
-	public Sprite map;
+	public Texture2D defaultMap;
 
-	void Start ()
-	{
-	
+	// Use this for initialization
+	void Start () {
+		MapManager.Instance.LoadMap(defaultMap);
 	}
 	
-	void Update ()
-	{
+	// Update is called once per frame
+	void Update () {
 	
 	}
 }
