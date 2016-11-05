@@ -22,5 +22,6 @@ public class TeleportTo : DefaultBlock {
     {
         player.GetComponent<Player>().position = target;
         player.GetComponent<Transform>().position = target * 0.16f;
+        player.GetComponent<Player>().newPos = target;
     }
 }

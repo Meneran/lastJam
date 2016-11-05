@@ -10,24 +10,29 @@ public enum Direction
 };
 public class Player : MonoBehaviour
 {
+    protected bool hasMoved;
     public Vector2 position;
     [SerializeField]
     protected int startX, startY;
     public Direction direction;
     protected Vector3 moveVector;
-    protected Vector2 newPos;
+    public Vector2 newPos;
+    public Vector2 oldPos;
     protected bool horizontal, vertical;
     [SerializeField]
     protected float tileSize;
     [SerializeField]
     protected float saveTimer;
     protected float timer;
+    [SerializeField]
+    protected float offset;
 
     // Use this for initialization
     void Start()
     {
         position = new Vector2(startX, startY);
         transform.position = MapManager.Instance.GetCoord(startX, startY);
+        transform.position += new Vector3(0, offset, 0);
         timer = saveTimer;
         newPos = position;
     }
@@ -41,10 +46,11 @@ public class Player : MonoBehaviour
         if (timer < 0 && position == newPos)
         {
             timer = saveTimer;
+            oldPos = position;
             move();
         }
 
-        if (new Vector3(newPos.x * tileSize, newPos.y * tileSize, 0) != transform.position)
+        if (new Vector3(newPos.x * tileSize, newPos.y * tileSize, 0) != transform.position - new Vector3(0, offset, 0))
         {
             transform.position += moveVector;
         }
@@ -54,10 +60,15 @@ public class Player : MonoBehaviour
         }
         GetComponent<Animator>().SetInteger("direction", (int)direction);
 
-        if (ObjectManager.Instance.GetGameObject((int)position.x, (int)position.y) != null)
+        if (ObjectManager.Instance.GetGameObject((int)position.x, (int)position.y) != null && hasMoved)
         {
             ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().activateOnWalk(gameObject);
-            newPos = position;
+            hasMoved = false;
+        }
+
+        if (ObjectManager.Instance.GetGameObject((int)oldPos.x, (int)oldPos.y) != null && hasMoved)
+        {
+            ObjectManager.Instance.GetGameObject((int)oldPos.x, (int)oldPos.y).GetComponent<DefaultBlock>().activateOnWalk(gameObject);
         }
     }
 

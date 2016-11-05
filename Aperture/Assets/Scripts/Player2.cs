@@ -9,6 +9,7 @@ public class Player2 : Player
     {
         if (Input.GetAxis("XAxis2") > 0)
         {
+            hasMoved = true;
             direction = Direction.RIGHT;
             newPos = position + new Vector2(1, 0);
             moveVector = new Vector3(1, 0, 0) * tileSize / 10;
@@ -20,6 +21,7 @@ public class Player2 : Player
         }
         if (Input.GetAxis("XAxis2") < 0)
         {
+            hasMoved = true;
             direction = Direction.LEFT;
             newPos = position + new Vector2(-1, 0);
             moveVector = new Vector3(-1, 0, 0) * tileSize / 10;
@@ -31,6 +33,7 @@ public class Player2 : Player
         }
         if (Input.GetAxis("YAxis2") < 0)
         {
+            hasMoved = true;
             direction = Direction.UP;
             newPos = position + new Vector2(0, 1);
             moveVector = new Vector3(0, 1, 0) * tileSize / 10;
@@ -42,6 +45,7 @@ public class Player2 : Player
         }
         if (Input.GetAxis("YAxis2") > 0)
         {
+            hasMoved = true;
             direction = Direction.DOWN;
             newPos = position + new Vector2(0, -1);
             moveVector = new Vector3(0, -1, 0) * tileSize / 10;
