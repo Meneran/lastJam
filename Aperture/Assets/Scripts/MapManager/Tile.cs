@@ -8,7 +8,7 @@ public enum Type
 	Back
 }
 
-public class Tile
+public class Tile : MonoBehaviour
 {
 	public int sprite;
 	public Type type;

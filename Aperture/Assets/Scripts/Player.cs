@@ -3,10 +3,10 @@ using System.Collections;
 
 public enum Direction
 {
-    UP,
     DOWN,
-    LEFT,
-    RIGHT
+    UP,
+    RIGHT,
+    LEFT
 };
 
 public class Player : MonoBehaviour
@@ -41,9 +41,9 @@ public class Player : MonoBehaviour
                 //transform.localEulerAngles = (new Vector3(0, 0, 0));
                 direction = Direction.RIGHT;
                 newPos = transform.position + new Vector3(1, 0, 0) * tileSize;
-                //if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type == Type::Floor)
-                //    newPos = transform.position;
                 move = new Vector3(1, 0, 0) * tileSize / 10;
+                if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type != Type.Floor)
+                    newPos = transform.position;
                 //transform.position += new Vector3(1, 0, 0) * tileSize;
             }
             if (Input.GetButton("Left"))
@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
                 direction = Direction.LEFT;
                 newPos = transform.position + new Vector3(-1, 0, 0) * tileSize;
                 move = new Vector3(-1, 0, 0) * tileSize / 10;
+                if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type != Type.Floor)
+                    newPos = transform.position;
                 //transform.position += new Vector3(-1, 0, 0) * tileSize;
             }
             if (Input.GetButton("Up"))
@@ -60,6 +62,8 @@ public class Player : MonoBehaviour
                 direction = Direction.UP;
                 newPos = transform.position + new Vector3(0, 1, 0) * tileSize;
                 move = new Vector3(0, 1, 0) * tileSize / 10;
+                if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type != Type.Floor)
+                    newPos = transform.position;
                 //transform.position += new Vector3(0, 1, 0) * tileSize;
             }
             if (Input.GetButton("Down"))
@@ -68,6 +72,8 @@ public class Player : MonoBehaviour
                 direction = Direction.DOWN;
                 newPos = transform.position + new Vector3(0, -1, 0) * tileSize;
                 move = new Vector3(0, -1, 0) * tileSize / 10;
+                if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type != Type.Floor)
+                    newPos = transform.position;
                 //transform.position += new Vector3(0, -1, 0) * tileSize;
             }
         }
