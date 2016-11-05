@@ -20,8 +20,9 @@ public class TeleportTo : DefaultBlock {
 
     public override void activateOnWalk(GameObject player)
     {
-        player.GetComponent<Player>().position = target;
-        player.GetComponent<Transform>().position = target * 0.16f;
-        player.GetComponent<Player>().newPos = target;
+            player.GetComponent<Player>().position = target;
+            player.GetComponent<Transform>().position = target * 0.16f + new Vector2(0, player.GetComponent<Player>().offset);
+            player.GetComponent<Player>().newPos = target;
+
     }
 }
