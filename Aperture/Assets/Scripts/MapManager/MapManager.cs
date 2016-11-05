@@ -23,7 +23,14 @@ public class MapManager : Singleton<MapManager>
 
 	public Tile GetTile(int x, int y)
 	{
-		return mapMatrix[x][y];
+		if ((x >= 0) && (y >= 0) && (x < mapMatrix.Count) && (y < mapMatrix[0].Count))
+		{
+			return mapMatrix[x][y];
+		}
+		else
+		{
+			return new Tile(-1, Type.Back);
+		}
 	}
 
 	void DisplayMap()
@@ -32,17 +39,18 @@ public class MapManager : Singleton<MapManager>
 		{
 			for (int y = 0; y < mapMatrix[0].Count; y++)
 			{
-				GameObject tempTile = new GameObject("Tile");
-				tempTile.AddComponent<SpriteRenderer>();
-
-				tempTile.transform.position = new Vector3(x * 0.16f, y * 0.16f, 0);
-
-				int type = mapMatrix[x][y].type;
-				Debug.Log(type);
+				int type = mapMatrix[x][y].sprite;
 
 				if (type >= 0)
 				{
-					tempTile.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tileSet[type].sprite, new Rect(0, 0, 16, 16), new Vector2(0.5f, 0.5f));
+					GameObject tempTile = new GameObject("Tile");
+					tempTile.AddComponent<SpriteRenderer>();
+
+					tempTile.transform.position = new Vector3(x * 0.16f, y * 0.16f, 0);
+
+					Rect tileRect = findRect(mapMatrix[x][y].type);
+
+					tempTile.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tileSet[type].sprite, tileRect, new Vector2(0.5f, 0.5f));
 				}
 			}
 		}
@@ -72,7 +80,12 @@ public class MapManager : Singleton<MapManager>
 		{
 			for (int y = 0; y < map.height; y++)
 			{
-				mapMatrix[x][y].type = findTile(map.GetPixel(x, y));
+				int idSprite = findTile(map.GetPixel(x, y));
+				mapMatrix[x][y].sprite = idSprite;
+				if (idSprite >= 0)
+				{
+					mapMatrix[x][y].type = tileSet[idSprite].type;
+				}
 			}
 		}
 	}
@@ -88,5 +101,15 @@ public class MapManager : Singleton<MapManager>
 		}
 
 		return -1;
+	}
+
+	Rect findRect(Type type)
+	{
+		if (type == Type.Wall)
+		{
+
+		}
+
+		return new Rect(0, 0, 16, 16);
 	}
 }
