@@ -7,6 +7,9 @@ public class MapManager : Singleton<MapManager>
 	public GameObject mapHolder;
 	public TileSprite[] tileSet;
 
+	public int xDim;
+	public int yDim;
+
 	List< List< Tile > > mapMatrix;
 
 	MapManager ()
@@ -83,6 +86,9 @@ public class MapManager : Singleton<MapManager>
 	void LoadTexture(Texture2D map)
 	{
 		SetDim(map.width, map.height);
+
+		xDim = map.width;
+		yDim = map.height;
 
 		for (int x = 0; x < map.width; x++)
 		{

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MapObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Objects>
+    <Object type="Teleporter" position="(1.0, 0.0, 0.0)" />
+    <Object type="Switch" position="(0.0, 2.0, 0.0)" />
+  </Objects>
+</MapObject>
