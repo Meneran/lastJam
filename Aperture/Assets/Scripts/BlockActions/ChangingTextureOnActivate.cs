@@ -9,6 +9,15 @@ public class ChangingTextureOnActivate : DefaultBlock {
     [SerializeField]
     private Sprite sprite2_whenDesactivated;
 
+    [SerializeField]
+    private int XposOfBlockToActivate;
+
+    [SerializeField]
+    private int YposOfBlockToActivate;
+
+    [SerializeField]
+    private bool activateOtherBlock;
+
     private bool isActive;
 
 	// Use this for initialization
@@ -25,6 +34,9 @@ public class ChangingTextureOnActivate : DefaultBlock {
         if (!isActive)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;
+            if (activateOtherBlock)
+            {
+                Tile tile MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate);
         }
     }
 
