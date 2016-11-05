@@ -1,15 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Direction
-{
-    DOWN,
-    UP,
-    RIGHT,
-    LEFT
-};
-
-public class Player : MonoBehaviour
+public class Player2 : MonoBehaviour
 {
     private Vector2 position;
     [SerializeField]
@@ -17,7 +9,6 @@ public class Player : MonoBehaviour
     public Direction direction;
     private Vector3 move;
     private Vector2 newPos;
-    private bool horizontal, vertical;
     [SerializeField]
     private float tileSize;
     [SerializeField]
@@ -40,8 +31,10 @@ public class Player : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0 && position == newPos)
         {
+            //Debug.Log(Input.GetAxis("Up2"));
+
             timer = saveTimer;
-            if (Input.GetAxis("XAxis1") > 0)
+            if (Input.GetAxis("XAxis2") > 0)
             {
                 direction = Direction.RIGHT;
                 newPos = position + new Vector2(1, 0);
@@ -49,7 +42,7 @@ public class Player : MonoBehaviour
                 if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                     newPos = position;
             }
-            if (Input.GetAxis("XAxis1") < 0)
+            if (Input.GetAxis("XAxis2") < 0)
             {
                 direction = Direction.LEFT;
                 newPos = position + new Vector2(-1, 0);
@@ -57,16 +50,18 @@ public class Player : MonoBehaviour
                 if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                     newPos = position;
             }
-            if (Input.GetAxis("YAxis1") > 0)
+            if (Input.GetAxis("YAxis2") < 0)
             {
+                //Debug.Log(Input.GetAxis("Up2"));
                 direction = Direction.UP;
                 newPos = position + new Vector2(0, 1);
                 move = new Vector3(0, 1, 0) * tileSize / 10;
                 if (MapManager.Instance.GetTile((int)(Mathf.Round(newPos.x)), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                     newPos = position;
             }
-            if (Input.GetAxis("YAxis1") < 0)
+            if (Input.GetAxis("YAxis2") > 0)
             {
+                //Debug.Log(Input.GetAxis("Down2"));
                 direction = Direction.DOWN;
                 newPos = position + new Vector2(0, -1);
                 move = new Vector3(0, -1, 0) * tileSize / 10;
