@@ -125,6 +125,7 @@ public class MenuManager : MonoBehaviour {
 					clock = timer;
 					state = StateMenu.LevelSelector;
 					Init(lvl_object);
+                    GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.LevelScene);
 					break;
 				case 2:
 					Debug.Log("Exiting...");

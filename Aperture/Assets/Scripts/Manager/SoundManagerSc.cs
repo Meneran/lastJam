@@ -99,6 +99,7 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
     {
         sourceMusic = gameObject.GetComponent<AudioSource>();
         LoadMusic(music);
+        MusicBg(true);
     }
 
     // CHARGE MUSIQUE

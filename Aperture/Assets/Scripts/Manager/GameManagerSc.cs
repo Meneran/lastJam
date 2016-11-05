@@ -9,8 +9,9 @@ using System.Threading;
 public class GameManagerSc : Singleton<GameManagerSc>
 {
 
-    public static GameManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
-    
+    static public GameManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
+    public int level = 0;
+
     public enum SceneUnity
     {
         ManagerScene,
