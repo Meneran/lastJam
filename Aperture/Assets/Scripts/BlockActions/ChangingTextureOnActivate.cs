@@ -18,12 +18,20 @@ public class ChangingTextureOnActivate : DefaultBlock {
     [SerializeField]
     private bool activateOtherBlock;
 
+    [SerializeField]
     private bool isActive;
 
 	// Use this for initialization
 	void Start () {
-	
-	}
+        if (isActive)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprite2_whenDesactivated;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -34,9 +42,11 @@ public class ChangingTextureOnActivate : DefaultBlock {
         if (!isActive)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;
+            isActive = true;
             if (activateOtherBlock)
             {
-                Tile tile MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate);
+                //MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate).getComponent<DefaultBlock>().activate();
+            }
         }
     }
 
@@ -45,6 +55,11 @@ public class ChangingTextureOnActivate : DefaultBlock {
         if(isActive)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite2_whenDesactivated;
+            isActive = false;
+            if (activateOtherBlock)
+            {
+                //MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate).getComponent<DefaultBlock>().desactivate();
+            }
         }
     }
 
@@ -53,9 +68,19 @@ public class ChangingTextureOnActivate : DefaultBlock {
         if (isActive)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite2_whenDesactivated;
+            isActive = false;
+            if (activateOtherBlock)
+            {
+                //MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate).getComponent<DefaultBlock>().desactivate();
+            }
         } else
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;
+            isActive = true;
+            if(activateOtherBlock)
+            {
+                //MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate).getComponent<DefaultBlock>().activate();
+            }
         }
     }
 
