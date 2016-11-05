@@ -15,7 +15,7 @@ public class Player1 : Player
             moveVector = new Vector3(1, 0, 0) * tileSize / 10;
             if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                 newPos = position;
-            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null)
+            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }
@@ -27,7 +27,7 @@ public class Player1 : Player
             moveVector = new Vector3(-1, 0, 0) * tileSize / 10;
             if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                 newPos = position;
-            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null)
+            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }
@@ -39,7 +39,7 @@ public class Player1 : Player
             moveVector = new Vector3(0, 1, 0) * tileSize / 10;
             if (MapManager.Instance.GetTile((int)(Mathf.Round(newPos.x)), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                 newPos = position;
-            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null)
+            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }
@@ -51,7 +51,7 @@ public class Player1 : Player
             moveVector = new Vector3(0, -1, 0) * tileSize / 10;
             if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                 newPos = position;
-            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null)
+            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }

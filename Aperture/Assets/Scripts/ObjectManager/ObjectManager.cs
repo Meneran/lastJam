@@ -93,7 +93,7 @@ public class ObjectManager : Singleton<ObjectManager>
 					{
 						objectMatrix[x, y] = new ObjectContainer(true, (GameObject)Instantiate(spriteArray[j].prefab, new Vector3(0, 0, 0), Quaternion.identity));
 						objectMatrix[x, y].gameObject.transform.position = new Vector3(x * 0.16f, y * 0.16f, -0.1f);
-						objectMatrix[x, y].gameObject.transform.parent = objectHolder.transform;
+                        objectMatrix[x, y].gameObject.transform.parent = objectHolder.transform;
 					}
 					/*
 					objectMatrix[x, y] = new ObjectContainer(true, new GameObject("Object"));
