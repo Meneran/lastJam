@@ -44,33 +44,43 @@ public class Beam : DefaultBlock {
         Yint_BeamPosition = Mathf.RoundToInt(BeamPosition.y);
         switch (direction) {
             case Direction.UP :
-                if(MapManager.Instance.GetTile(Xint_BeamPosition, Yint_BeamPosition+1).type == TileType.Floor)
+                if(MapManager.Instance.GetTile(Xint_BeamPosition, Yint_BeamPosition + 1).type == TileType.Floor)
                 {
                     BeamPosition.y += 1;
-                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition + 1) + Zoffset);
+                    Yint_BeamPosition += 1;
+                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset);
                 }
                 break;
             case Direction.DOWN:
                 if (MapManager.Instance.GetTile(Xint_BeamPosition, Yint_BeamPosition - 1).type == TileType.Floor)
                 {
                     BeamPosition.y -= 1;
-                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition - 1) + Zoffset);
+                    Yint_BeamPosition -= 1;
+                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset);
                 }
                 break;
             case Direction.RIGHT:
                 if (MapManager.Instance.GetTile(Xint_BeamPosition + 1, Yint_BeamPosition).type == TileType.Floor)
                 {
                     BeamPosition.x += 1;
-                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition + 1, Yint_BeamPosition) + Zoffset);
+                    Xint_BeamPosition += 1;
+                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset);
                 }
                 break;
             case Direction.LEFT:
                 if (MapManager.Instance.GetTile(Xint_BeamPosition - 1, Yint_BeamPosition + 1).type == TileType.Floor)
                 {
                     BeamPosition.x -= 1;
-                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition - 1, Yint_BeamPosition) + Zoffset);
+                    Xint_BeamPosition -= 1;
+                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset);
                 }
                 break;
         }
 	}
+
+    public void reflect(Direction newDirection)
+    {
+        direction = newDirection;
+        finalLineRendererPoint++;
+    }
 }

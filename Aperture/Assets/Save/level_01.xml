@@ -9,5 +9,13 @@
         <z>0</z>
       </position>
     </Object>
+    <Object>
+      <type>Mirror</type>
+      <position>
+        <x>5</x>
+        <y>5</y>
+        <z>0</z>
+      </position>
+    </Object>
   </Objects>
 </MapObject>
