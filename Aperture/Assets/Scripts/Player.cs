@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum Direction
+{
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+};
+
 public class Player : MonoBehaviour
 {
-
-    private Vector3 stop = new Vector3(0, 0, 0);
+    public Direction direction;
     private Vector3 move;
     private Vector3 newPos;
     private bool horizontal, vertical;
@@ -31,28 +38,34 @@ public class Player : MonoBehaviour
             timer = saveTimer;
             if (Input.GetButton("Right"))
             {
-                transform.localEulerAngles = (new Vector3(0, 0, 0));
+                //transform.localEulerAngles = (new Vector3(0, 0, 0));
+                direction = Direction.RIGHT;
                 newPos = transform.position + new Vector3(1, 0, 0) * tileSize;
+                //if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type == Type::Floor)
+                //    newPos = transform.position;
                 move = new Vector3(1, 0, 0) * tileSize / 10;
                 //transform.position += new Vector3(1, 0, 0) * tileSize;
             }
             if (Input.GetButton("Left"))
             {
-                transform.localEulerAngles = (new Vector3(0, 0, 180));
+                //transform.localEulerAngles = (new Vector3(0, 0, 180));
+                direction = Direction.LEFT;
                 newPos = transform.position + new Vector3(-1, 0, 0) * tileSize;
                 move = new Vector3(-1, 0, 0) * tileSize / 10;
                 //transform.position += new Vector3(-1, 0, 0) * tileSize;
             }
             if (Input.GetButton("Up"))
             {
-                transform.localEulerAngles = (new Vector3(0, 0, 90));
+                //transform.localEulerAngles = (new Vector3(0, 0, 90));
+                direction = Direction.UP;
                 newPos = transform.position + new Vector3(0, 1, 0) * tileSize;
                 move = new Vector3(0, 1, 0) * tileSize / 10;
                 //transform.position += new Vector3(0, 1, 0) * tileSize;
             }
             if (Input.GetButton("Down"))
             {
-                transform.localEulerAngles = (new Vector3(0, 0, -90));
+                //transform.localEulerAngles = (new Vector3(0, 0, -90));
+                direction = Direction.DOWN;
                 newPos = transform.position + new Vector3(0, -1, 0) * tileSize;
                 move = new Vector3(0, -1, 0) * tileSize / 10;
                 //transform.position += new Vector3(0, -1, 0) * tileSize;
