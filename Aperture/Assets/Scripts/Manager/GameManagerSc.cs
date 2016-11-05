@@ -10,6 +10,13 @@ public class GameManagerSc : Singleton<GameManagerSc>
 {
 
     public static GameManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
+    
+    public enum SceneUnity
+    {
+        ManagerScene,
+        MenuScene,
+        LevelScene
+    }
 
     //Awake is always called before any Start functions
     void Awake()
@@ -30,18 +37,38 @@ public class GameManagerSc : Singleton<GameManagerSc>
         DontDestroyOnLoad(gameObject);
 
         //Call the InitGame function to initialize the first level 
-        InitGame();
+        InitGameManager();
     }
 
     //Initializes the game for each level.
-    void InitGame()
+    void InitGameManager()
     {
         Debug.Log("GameManager initialized");
+        InitFirstScene();
     }
 
-    void LoadScene(Scene oldScene, Scene newScene)
+    void InitFirstScene()
     {
+        LoadSceneUnity(SceneUnity.MenuScene);
+    }
 
+    public void LoadSceneUnity(SceneUnity newScene, int lvl=0)
+    {
+        switch (newScene)
+        {
+            case SceneUnity.LevelScene :
+                SceneManager.LoadScene("main");
+
+                break;
+
+            case SceneUnity.MenuScene :
+                SceneManager.LoadScene("intro");
+                break;
+
+            case SceneUnity.ManagerScene:
+                SceneManager.LoadScene("ManagerScene");
+                break;
+        }
     }
 
 }

@@ -5,13 +5,31 @@ public class InputManagerSc : Singleton<InputManagerSc> {
 
     public static InputManagerSc instance = null;              //Static instance of InputManager which allows it to be accessed by any other script.
 
-    private float horizontal;
-    private float vertical;
+    // accès via par exemple InputManagerSc.Instance.start
 
-    private bool a = false;
-    private bool b = false;
-    private bool x = false;
-    private bool y = false;
+    public bool start = false;
+
+    public bool upP1 = false;
+    public bool rightP1 = false;
+    public bool leftP1 = false;
+    public bool downP1 = false;
+
+    public bool upP2 = false;
+    public bool rightP2 = false;
+    public bool leftP2 = false;
+    public bool downP2 = false;
+
+    public bool act1P1 = false;
+    public bool act2P1 = false;
+    public bool act3P1 = false;
+    public bool act4P1 = false;
+
+    public bool act1P2 = false;
+    public bool act2P2 = false;
+    public bool act3P2 = false;
+    public bool act4P2 = false;
+
+    
 
     //Awake is always called before any Start functions
     void Awake()
@@ -45,33 +63,23 @@ public class InputManagerSc : Singleton<InputManagerSc> {
     //Update is called every frame.
     void Update()
     {
-        UpdateInput();
-
-        //this.gameObject.transform.position = (new Vector2(horizontal, vertical));
-
-        //rend.material.SetColor("_Color", Color.black);
-
-        if (a)
+        if (upP1)
             SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip1);
-         if (b)
-            SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip2);
-         if (x)
-            SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip3);
-        /* if (y)
-            // rend.material.SetColor("_Color", Color.yellow);
-         */
-
+        UpdateInput();
     }
 
     void UpdateInput()
     {
 
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-        a = Input.GetKey("joystick button 0");
-        b = Input.GetKey("joystick button 1");
-        x = Input.GetKey("joystick button 2");
-        y = Input.GetKey("joystick button 3");
+        rightP1 = Input.GetAxis("XAxis1") > 0;
+        leftP1 = Input.GetAxis("XAxis1") < 0;
+        upP1 = Input.GetAxis("YAxis1") > 0;
+        downP1 = Input.GetAxis("YAxis1") < 0;
+
+        rightP2 = Input.GetAxis("XAxis2") > 0;
+        leftP2 = Input.GetAxis("XAxis2") < 0;
+        upP2 = Input.GetAxis("YAxis2") < 0;
+        downP2 = Input.GetAxis("YAxis2") > 0;
     }
 }
 
