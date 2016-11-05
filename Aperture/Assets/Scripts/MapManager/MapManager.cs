@@ -42,6 +42,11 @@ public class MapManager : Singleton<MapManager>
 		return new Vector2(x * 0.16f, y * 0.16f);
 	}
 
+	public Vector2 GetTileCoord(Vector2 coord)
+	{
+		return new Vector2(coord.x / 0.16f, coord.y / 0.16f);
+	}
+
 	void DisplayMap()
 	{
 		for (int x = 0; x < mapMatrix.Count; x++)
