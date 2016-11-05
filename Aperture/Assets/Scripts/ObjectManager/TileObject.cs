@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 
 public enum ObjectType
 {
+	Default,
 	Light,
 	Switch,
 	Box,

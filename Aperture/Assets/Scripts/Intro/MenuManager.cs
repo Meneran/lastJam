@@ -43,7 +43,7 @@ public class MenuManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		float displacement = -2.5f;
+		float displacement = -3.5f;
 
 		if (clock > 0)
 		{
@@ -82,6 +82,20 @@ public class MenuManager : MonoBehaviour {
 		{
 			OnLeave(std_object[selectedMenu]);
 			selectedMenu = (selectedMenu + nBtn - 1) % nBtn;
+			OnSelect(std_object[selectedMenu]);
+		}
+
+		if (Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			OnLeave(std_object[selectedMenu]);
+			selectedMenu = (selectedMenu + 3) % nBtn;
+			OnSelect(std_object[selectedMenu]);
+		}
+
+		if (Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			OnLeave(std_object[selectedMenu]);
+			selectedMenu = (selectedMenu + nBtn - 3) % nBtn;
 			OnSelect(std_object[selectedMenu]);
 		}
 
