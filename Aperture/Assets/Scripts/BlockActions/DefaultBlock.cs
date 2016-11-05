@@ -48,6 +48,6 @@ public class DefaultBlock : MonoBehaviour {
 
     public virtual void activateOnWalk(GameObject player)
     {
-
+        Debug.Log("test");
     }
 }

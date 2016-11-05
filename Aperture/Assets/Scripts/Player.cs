@@ -97,5 +97,9 @@ public class Player : MonoBehaviour
             position = newPos;
         }
         GetComponent<Animator>().SetInteger("direction", (int)direction);
+
+        if (ObjectManager.Instance.GetGameObject((int)position.x, (int)position.y) != null) 
+            ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().activateOnWalk(this.gameObject);
     }
+
 }
