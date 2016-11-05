@@ -63,8 +63,6 @@ public class InputManagerSc : Singleton<InputManagerSc> {
     //Update is called every frame.
     void Update()
     {
-        if (upP1)
-            SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip1);
         UpdateInput();
     }
 
