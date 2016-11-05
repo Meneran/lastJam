@@ -1,36 +1,35 @@
-Temp
-Doxygen
-Aperture.CSharp.csproj
-Aperture.CSharp.Plugins.csproj
-*.sln
-.vs
-Library
-obj
-Assembly-CSharp.csproj
-Assembly-CSharp-firstpass.csproj
-Aperture.CSharp.csproj
-Aperture.CSharp.Plugins.csproj
-Aperture.v11.suo
-/Aperture/Temp
-/Aperture/Doxygen
-/Aperture/RedAndBlue.CSharp.csproj
-/Aperture/RedAndBlue.CSharp.Plugins.csproj
-/Aperture/.vs
-/Aperture/Library
-/Aperture/obj
-/Aperture/Assembly-CSharp.csproj
-/Aperture/Assembly-CSharp-firstpass.csproj
-/Aperture/Aperture.CSharp.csproj
-/Aperture/Aperture.CSharp.Plugins.csproj
-/Aperture/Aperture.v11.suo
-/Aperture/Temp/*
-/Aperture/Doxygen/*
-/Aperture/.vs/*
-/Aperture/Library/*
-/Aperture/obj/*
-/Aperture/*.userprefs
-Aperture/Assets/Prefabs.meta
-*.meta
-Aperture/Assets/Prefabs.meta
-Aperture/Assets/Prefabs.meta
-*.meta
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+[Ll]ibrary/
+sysinfo.txt
+*.stackdump
+ 
+# ============================================= #
+# Visual Studio / MonoDevelop / Rider generated #
+# ============================================= #
+[Ee]xported[Oo]bj/
+.vs/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+/.idea*/
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
