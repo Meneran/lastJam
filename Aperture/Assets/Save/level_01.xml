@@ -2,7 +2,7 @@
 <MapObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Objects>
     <Object>
-      <type>Light</type>
+      <type>Teleporter</type>
       <position>
         <x>7</x>
         <y>5</y>

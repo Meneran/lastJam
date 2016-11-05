@@ -7,7 +7,8 @@ public enum ObjectType
 {
 	Light,
 	Switch,
-	Box
+	Box,
+	Teleporter
 }
 
 [System.Serializable]

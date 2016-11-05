@@ -8,13 +8,15 @@ using System.IO;
 public struct ObjectSprite
 {
 	public ObjectType type;
-	public Texture2D sprite;
+	//public Texture2D sprite;
+	public GameObject prefab;
 }
 
 public struct ObjectContainer
 {
 	public bool set;
 	public GameObject gameObject;
+
 
 	public ObjectContainer(bool set, GameObject gameObject)
 	{
@@ -87,16 +89,29 @@ public class ObjectManager : Singleton<ObjectManager>
 					int x = (int)mapObject.ObjectArray[i].position.x;
 					int y = (int)mapObject.ObjectArray[i].position.y;
 
+					if (spriteArray[j].prefab != null)
+					{
+						objectMatrix[x, y] = new ObjectContainer(true, (GameObject)Instantiate(spriteArray[j].prefab, new Vector3(0, 0, 0), Quaternion.identity));
+						objectMatrix[x, y].gameObject.transform.position = new Vector3(x * 0.16f, y * 0.16f, -0.1f);
+						objectMatrix[x, y].gameObject.transform.parent = objectHolder.transform;
+					}
+					/*
 					objectMatrix[x, y] = new ObjectContainer(true, new GameObject("Object"));
 
 					objectMatrix[x, y].gameObject.transform.parent = objectHolder.transform;
-					objectMatrix[x, y].gameObject.AddComponent<SpriteRenderer>();
+					//objectMatrix[x, y].gameObject.AddComponent<SpriteRenderer>();
 
 					objectMatrix[x, y].gameObject.transform.position = new Vector3(x * 0.16f, y * 0.16f, -0.1f);
-
-					objectMatrix[x, y].gameObject.GetComponent<SpriteRenderer>().sprite = Sprite.Create(spriteArray[j].sprite, new Rect(0, 0, 16, 16), new Vector2(0.5f, 0.5f));
+					//objectMatrix[x, y].gameObject.GetComponent<SpriteRenderer>().sprite = Sprite.Create(spriteArray[j].sprite, new Rect(0, 0, 16, 16), new Vector2(0.5f, 0.5f));
 
 					objectMatrix[x, y].gameObject.AddComponent<DefaultBlock>();
+
+					if (spriteArray[j].prefab != null)
+					{
+						GameObject childPrefab = (GameObject)Instantiate(spriteArray[j].prefab, new Vector3(0, 0, 0), Quaternion.identity);
+						childPrefab.transform.parent = objectMatrix[x, y].gameObject.transform;
+					}
+					*/
 				}
 			}
 		}
