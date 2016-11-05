@@ -81,5 +81,6 @@ public class Player : MonoBehaviour
         {
             transform.position += move;
         }
+        GetComponent<Animator>().SetInteger("direction", (int)direction);
     }
 }
