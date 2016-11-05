@@ -14,28 +14,32 @@ public class Beam : DefaultBlock {
     [SerializeField]
     private Sprite[] spriteArray;
 
+    private Vector3[] arrayOfBeamPoints;
+
     private int finalLineRendererPoint;
 
 	// Use this for initialization
 	void Start () {
+        finalLineRendererPoint = 1;
+        arrayOfBeamPoints = new Vector3[finalLineRendererPoint + 1];
         gameObject.GetComponent<SpriteRenderer>().sprite = spriteArray[(int)direction];
         switch(direction)
         {
             case Direction.UP:
-                GetComponent<LineRenderer>().SetPosition(0,transform.position + Zoffset + new Vector3(0, 0.06f, 0));    
+                arrayOfBeamPoints[0] = transform.position + Zoffset + new Vector3(0, 0.06f, 0.1f);   
                 break;
             case Direction.DOWN:
-                GetComponent<LineRenderer>().SetPosition(0, transform.position + Zoffset + new Vector3(0, -0.05f, 0));
+                arrayOfBeamPoints[0] = transform.position + Zoffset + new Vector3(0, -0.05f, 0.1f);
                 break;
             case Direction.RIGHT:
-                GetComponent<LineRenderer>().SetPosition(0, transform.position + Zoffset + new Vector3(0.06f, 0, 0));
+                arrayOfBeamPoints[0] = transform.position + Zoffset + new Vector3(0.06f, 0, 0.1f);
                 break;
             case Direction.LEFT:
-                GetComponent<LineRenderer>().SetPosition(0, transform.position + Zoffset + new Vector3(-0.06f, 0, 0));
+                arrayOfBeamPoints[0] = transform.position + Zoffset + new Vector3(-0.06f, 0, 0.1f);
                 break;
         }
+        GetComponent<LineRenderer>().SetPosition(0, arrayOfBeamPoints[0]);
         BeamPosition = MapManager.Instance.GetTileCoord(new Vector2(transform.position.x, transform.position.y));
-        finalLineRendererPoint = 1;
     }
 	
 	// Update is called once per frame
@@ -48,7 +52,8 @@ public class Beam : DefaultBlock {
                 {
                     BeamPosition.y += 1;
                     Yint_BeamPosition += 1;
-                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset);
+                    arrayOfBeamPoints[finalLineRendererPoint] = (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset;
+                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, arrayOfBeamPoints[finalLineRendererPoint]);
                 }
                 break;
             case Direction.DOWN:
@@ -56,7 +61,8 @@ public class Beam : DefaultBlock {
                 {
                     BeamPosition.y -= 1;
                     Yint_BeamPosition -= 1;
-                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset);
+                    arrayOfBeamPoints[finalLineRendererPoint] = (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset;
+                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, arrayOfBeamPoints[finalLineRendererPoint]);
                 }
                 break;
             case Direction.RIGHT:
@@ -64,7 +70,8 @@ public class Beam : DefaultBlock {
                 {
                     BeamPosition.x += 1;
                     Xint_BeamPosition += 1;
-                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset);
+                    arrayOfBeamPoints[finalLineRendererPoint] = (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset;
+                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, arrayOfBeamPoints[finalLineRendererPoint]);
                 }
                 break;
             case Direction.LEFT:
@@ -72,15 +79,43 @@ public class Beam : DefaultBlock {
                 {
                     BeamPosition.x -= 1;
                     Xint_BeamPosition -= 1;
-                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset);
+                    arrayOfBeamPoints[finalLineRendererPoint] = (Vector3)MapManager.Instance.GetCoord(Xint_BeamPosition, Yint_BeamPosition) + Zoffset;
+                    GetComponent<LineRenderer>().SetPosition(finalLineRendererPoint, arrayOfBeamPoints[finalLineRendererPoint]);
                 }
                 break;
+        }
+        GameObject mirror = ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition);
+        if (mirror != null)
+        {
+            Debug.Log(direction);
+            Debug.Log("Object met");
+            if (ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).CompareTag("mirror"))
+            {
+                Debug.Log("That was a mirror");
+                ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).GetComponent<MirrorBlock>().activateMirror(gameObject);
+            }
+            Debug.Log(direction);
         }
 	}
 
     public void reflect(Direction newDirection)
     {
+        Debug.Log("new direction = " + newDirection);
         direction = newDirection;
         finalLineRendererPoint++;
+        Vector3[] array = new Vector3[finalLineRendererPoint+1];
+        for(int i = 0; i < finalLineRendererPoint; i++)
+        {
+            array[i] = arrayOfBeamPoints[i];
+        }
+        array[finalLineRendererPoint] = arrayOfBeamPoints[finalLineRendererPoint - 1];
+        arrayOfBeamPoints = array;
+        GetComponent<LineRenderer>().SetVertexCount(finalLineRendererPoint + 1);
+        GetComponent<LineRenderer>().SetPositions(arrayOfBeamPoints);
+    }
+
+    public Direction getLazerDirection()
+    {
+        return direction;
     }
 }
