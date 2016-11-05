@@ -12,4 +12,9 @@ public class RollingStairBlocks : DefaultBlock {
 	void Update () {
 	
 	}
+
+    public override void activateOnWalk(GameObject player)
+    {
+        //player.GetComponent<>
+    }
 }
