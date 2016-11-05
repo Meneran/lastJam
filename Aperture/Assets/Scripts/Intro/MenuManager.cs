@@ -119,21 +119,33 @@ public class MenuManager : MonoBehaviour {
 				Init(btn_object);
 			}
 		}
-		else if (state == StateMenu.Start)
+		else
 		{
-			switch(selectedMenu)
+			switch (state)
 			{
-				case 0:
-					Debug.Log("Goto Level Selector");
-					clock = timer;
-					state = StateMenu.LevelSelector;
-					Init(lvl_object);
-                    GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.MeneranScene);
+				case (StateMenu.Start):
+			
+					switch (selectedMenu)
+					{
+						case 0:
+							Debug.Log("Goto Level Selector");
+							clock = timer;
+							state = StateMenu.LevelSelector;
+							Init(lvl_object);
+							
+							break;
+						case 2:
+							Debug.Log("Exiting...");
+							Application.Quit();
+							break;
+					}
 					break;
-				case 2:
-					Debug.Log("Exiting...");
-					Application.Quit();
+
+				case (StateMenu.LevelSelector):
+					GameManagerSc.Instance.level = selectedMenu;
+					//GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.MeneranScene);
 					break;
+
 			}
 		}
 	}
