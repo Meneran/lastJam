@@ -37,9 +37,6 @@ public class Player : MonoBehaviour
         transform.position += new Vector3(0, offset, 0);
         timer = saveTimer;
         newPos = position;
-        Debug.Log("position " + position);
-        Debug.Log("newPos" + newPos);
-        Debug.Log("transform " + transform.position);
     }
 
     // Update is called once per frame

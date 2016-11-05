@@ -29,7 +29,7 @@ public class InputManagerSc : Singleton<InputManagerSc> {
     public bool act3P2 = false;
     public bool act4P2 = false;
 
-    
+
 
     //Awake is always called before any Start functions
     void Awake()
@@ -56,7 +56,7 @@ public class InputManagerSc : Singleton<InputManagerSc> {
     //Initializes the game for each level.
     void InitInput()
     {
-       // = this.gameObject.GetComponent<>();
+        // = this.gameObject.GetComponent<>();
         Debug.Log("InputManager initialized");
     }
 

@@ -7,8 +7,10 @@ public class Player1 : Player
 {
     public override void move()
     {
+        //if (Input.GetAxis("XAxis1") > 0)
         if (InputManagerSc.Instance.rightP1)
         {
+            Debug.Log("test");
             hasMoved = true;
             direction = Direction.RIGHT;
             newPos = position + new Vector2(1, 0);

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Door : MonoBehaviour {
+public class Door : DefaultBlock {
 
 	// Use this for initialization
 	void Start () {
