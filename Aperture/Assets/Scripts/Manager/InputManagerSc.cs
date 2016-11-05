@@ -47,19 +47,19 @@ public class InputManagerSc : Singleton<InputManagerSc> {
     {
         UpdateInput();
 
-        this.gameObject.transform.position = (new Vector2(horizontal, vertical));
+        //this.gameObject.transform.position = (new Vector2(horizontal, vertical));
 
-      /*  rend.material.SetColor("_Color", Color.black);
+        //rend.material.SetColor("_Color", Color.black);
 
         if (a)
-            rend.material.SetColor("_Color", Color.green);
-        if (b)
-            rend.material.SetColor("_Color", Color.red);
-        if (x)
-            rend.material.SetColor("_Color", Color.blue);
-        if (y)
-            rend.material.SetColor("_Color", Color.yellow);
-        */
+            SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip1);
+         if (b)
+             SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip2);
+         if (x)
+            SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip3);
+        /* if (y)
+            // rend.material.SetColor("_Color", Color.yellow);
+         */
 
     }
 
