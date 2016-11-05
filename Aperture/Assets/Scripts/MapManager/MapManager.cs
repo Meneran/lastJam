@@ -44,7 +44,7 @@ public class MapManager : Singleton<MapManager>
 
 	public Vector2 GetTileCoord(Vector2 coord)
 	{
-		return new Vector2((int)(coord.x / 0.16f), (int)(coord.y / 0.16f));
+		return new Vector2((int)Mathf.Round(coord.x / 0.16f), (int)Mathf.Round(coord.y / 0.16f));
 	}
 
 	void DisplayMap()
