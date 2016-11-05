@@ -4,10 +4,12 @@ using System.Collections;
 public class DefaultBlock : MonoBehaviour {
 
     [SerializeField]
-    private bool allowToPass;
+    public bool allowToPass;
+    //[SerializeField]
+    //protected bool isActive;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 	}
 	

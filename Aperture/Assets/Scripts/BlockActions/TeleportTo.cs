@@ -20,9 +20,18 @@ public class TeleportTo : DefaultBlock {
 
     public override void activateOnWalk(GameObject player)
     {
+        bool canTP = true;
+        for (int i = 0; i < PlayerManager.Instance.playerArray.Length; ++i)
+        {
+            if (PlayerManager.Instance.getPlayerCoord(i) == target)
+                canTP = false;
+        }
+        if (canTP)
+        {
             player.GetComponent<Player>().position = target;
             player.GetComponent<Transform>().position = target * 0.16f + new Vector2(0, player.GetComponent<Player>().offset);
             player.GetComponent<Player>().newPos = target;
+        }
 
     }
 }
