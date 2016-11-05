@@ -23,9 +23,9 @@ public class MainManagerSc : MonoBehaviour
             soundManager = (GameObject)Instantiate(soundManager);
         
         //Check if a InputManager has already been assigned to static variable GameManager.instance or if it's still null
-        //if (InputManagerSc.instance == null)
+        if (InputManagerSc.instance == null)
 
             //Instantiate SoundManager prefab
-            //inputManager = (GameObject)Instantiate(inputManager);
+            inputManager = (GameObject)Instantiate(inputManager);
     }
 }
