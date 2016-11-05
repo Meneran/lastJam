@@ -9,9 +9,12 @@ public class MapLoader : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		MapManager.Instance.LoadMap(defaultMap);
-		//ObjectManager.Instance.SaveMap("level_01.xml");
-		ObjectManager.Instance.LoadMap(defaultLevelObject);
-	}
+        //ObjectManager.Instance.SaveMap("level_01.xml");
+        //ObjectManager.Instance.LoadMap(defaultLevelObject);
+
+        ObjectManager.Instance.InitMatrix();
+        ObjectManager.Instance.LoadSprite();
+    }
 	
 	// Update is called once per frame
 	void Update () {

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MirrorBlock : MonoBehaviour {
 
+
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,4 +14,9 @@ public class MirrorBlock : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void activateMirror()
+    {
+
+    }
 }
