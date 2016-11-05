@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: 8fa92d8b007d07a478f3e10db2fbed24
-timeCreated: 1478306597
+timeCreated: 1478349138
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: ROBOT-BACK_0
+    21300002: ROBOT-BACK_1
+    21300004: ROBOT-BACK_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -51,7 +54,46 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ROBOT-BACK_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 10
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ROBOT-BACK_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 5
+        width: 5
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ROBOT-BACK_2
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 11
+        width: 4
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
