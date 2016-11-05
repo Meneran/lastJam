@@ -1,13 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChangingTextureOnActivate : MonoBehaviour {
+public class ChangingTextureOnActivate : DefaultBlock {
 
     [SerializeField]
     private Sprite sprite1_whenActivated;
 
     [SerializeField]
     private Sprite sprite2_whenDesactivated;
+
+    [SerializeField]
+    private int XposOfBlockToActivate;
+
+    [SerializeField]
+    private int YposOfBlockToActivate;
+
+    [SerializeField]
+    private bool activateOtherBlock;
 
     private bool isActive;
 
@@ -21,14 +30,18 @@ public class ChangingTextureOnActivate : MonoBehaviour {
 	
 	}
 
-    public void activate() {
+    public override void activate() {
         if (!isActive)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;
+            if (activateOtherBlock)
+            {
+                Tile tile MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate);
+            }
         }
     }
 
-    public void desactivate()
+    public override void desactivate()
     {
         if(isActive)
         {
@@ -36,7 +49,7 @@ public class ChangingTextureOnActivate : MonoBehaviour {
         }
     }
 
-    public void changeState()
+    public override void changeState()
     {
         if (isActive)
         {
@@ -45,5 +58,10 @@ public class ChangingTextureOnActivate : MonoBehaviour {
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;
         }
+    }
+
+    public override void activateOnWalk()
+    {
+        changeState();
     }
 }

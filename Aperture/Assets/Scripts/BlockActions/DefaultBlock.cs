@@ -30,4 +30,24 @@ public class DefaultBlock : MonoBehaviour {
     {
         return allowToPass;
     }
+
+    public virtual void activate()
+    {
+
+    }
+
+    public virtual void desactivate()
+    {
+
+    }
+
+    public virtual void changeState()
+    {
+
+    }
+
+    public virtual void activateOnWalk()
+    {
+
+    }
 }
