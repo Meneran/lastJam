@@ -34,6 +34,11 @@ public class MapManager : Singleton<MapManager>
 		}
 	}
 
+	public Vector2 GetCoord(int x, int y)
+	{
+		return new Vector2(x * 0.16f, y * 0.16f);
+	}
+
 	void DisplayMap()
 	{
 		for (int x = 0; x < mapMatrix.Count; x++)
