@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
         if (timer < 0 && position == newPos)
         {
             timer = saveTimer;
+
+           
             if (Input.GetAxis("XAxis1") > 0)
             {
                 direction = Direction.RIGHT;
@@ -48,6 +50,9 @@ public class Player : MonoBehaviour
                 move = new Vector3(1, 0, 0) * tileSize / 10;
                 if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                     newPos = position;
+                if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null)
+                    if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
+                        newPos = position;
             }
             if (Input.GetAxis("XAxis1") < 0)
             {
@@ -56,6 +61,9 @@ public class Player : MonoBehaviour
                 move = new Vector3(-1, 0, 0) * tileSize / 10;
                 if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                     newPos = position;
+                if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null)
+                    if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
+                        newPos = position;
             }
             if (Input.GetAxis("YAxis1") > 0)
             {
@@ -64,6 +72,9 @@ public class Player : MonoBehaviour
                 move = new Vector3(0, 1, 0) * tileSize / 10;
                 if (MapManager.Instance.GetTile((int)(Mathf.Round(newPos.x)), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                     newPos = position;
+                if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null)
+                    if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
+                        newPos = position;
             }
             if (Input.GetAxis("YAxis1") < 0)
             {
@@ -72,6 +83,9 @@ public class Player : MonoBehaviour
                 move = new Vector3(0, -1, 0) * tileSize / 10;
                 if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
                     newPos = position;
+                if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null)
+                    if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
+                        newPos = position;
             }
         }
         if (new Vector3(newPos.x * tileSize, newPos.y * tileSize, 0) != transform.position)
