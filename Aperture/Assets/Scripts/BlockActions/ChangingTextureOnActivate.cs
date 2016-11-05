@@ -45,7 +45,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
             isActive = true;
             if (activateOtherBlock)
             {
-                //MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate).getComponent<DefaultBlock>().activate();
+                ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().activate();
             }
         }
     }
@@ -58,7 +58,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
             isActive = false;
             if (activateOtherBlock)
             {
-                //MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate).getComponent<DefaultBlock>().desactivate();
+                ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().desactivate();
             }
         }
     }
@@ -71,7 +71,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
             isActive = false;
             if (activateOtherBlock)
             {
-                //MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate).getComponent<DefaultBlock>().desactivate();
+                ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().changeState();
             }
         } else
         {
@@ -79,7 +79,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
             isActive = true;
             if(activateOtherBlock)
             {
-                //MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate).getComponent<DefaultBlock>().activate();
+                ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().changeState();
             }
         }
     }
