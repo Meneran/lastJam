@@ -16,12 +16,13 @@ public struct ObjectContainer
 {
 	public bool set;
 	public GameObject gameObject;
+	public ObjectType type;
 
-
-	public ObjectContainer(bool set, GameObject gameObject)
+	public ObjectContainer(bool set, GameObject gameObject, ObjectType type)
 	{
 		this.set = set;
 		this.gameObject = gameObject;
+		this.type = type;
 	}
 
 }
@@ -52,9 +53,9 @@ public class ObjectManager : Singleton<ObjectManager>
 	{
 		if ((x >= 0) && (y >= 0) && (x < objectMatrix.GetLength(0)) && (y < objectMatrix.GetLength(1)))
 		{
-			if (objectMatrix[x,y].set)
+			if (objectMatrix[x, y].set)
 			{
-				return objectMatrix[x,y].gameObject;
+				return objectMatrix[x, y].gameObject;
 			}
 			else
 			{
@@ -64,6 +65,25 @@ public class ObjectManager : Singleton<ObjectManager>
 		else
 		{
 			return null;
+		}
+	}
+	
+	public ObjectType GetTypeObject(int x, int y)
+	{
+		if ((x >= 0) && (y >= 0) && (x < objectMatrix.GetLength(0)) && (y < objectMatrix.GetLength(1)))
+		{
+			if (objectMatrix[x, y].set)
+			{
+				return objectMatrix[x, y].type;
+			}
+			else
+			{
+				return ObjectType.Default;
+			}
+		}
+		else
+		{
+			return ObjectType.Default;
 		}
 	}
 
@@ -91,7 +111,7 @@ public class ObjectManager : Singleton<ObjectManager>
 
 					if (spriteArray[j].prefab != null)
 					{
-						objectMatrix[x, y] = new ObjectContainer(true, (GameObject)Instantiate(spriteArray[j].prefab, new Vector3(0, 0, 0), Quaternion.identity));
+						objectMatrix[x, y] = new ObjectContainer(true, (GameObject)Instantiate(spriteArray[j].prefab, new Vector3(0, 0, 0), Quaternion.identity), spriteArray[j].type);
 						objectMatrix[x, y].gameObject.transform.position = new Vector3(x * 0.16f, y * 0.16f, -0.1f);
                         objectMatrix[x, y].gameObject.transform.parent = objectHolder.transform;
 					}
