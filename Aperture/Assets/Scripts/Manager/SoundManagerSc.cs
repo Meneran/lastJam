@@ -6,9 +6,12 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
 {
 
     public static SoundManagerSc instance = null;              //Static instance of SoundManager which allows it to be accessed by any other script.
-    public AudioSource sourceMusic;
-    public List<AudioSource> sources;
+    public AudioClip music;
     public AudioClip[] fSound = new AudioClip[13];
+
+    AudioSource sourceMusic;
+    List<GameObject> sources;
+    
     public enum Sound { Laser, Door, RollingStair, ClickOn, ClickOff, Push, Footsteps, Break, Fail, R2D2talk, Bip1, Bip2, Bip3 };
 
     //Awake is always called before any Start functions
@@ -33,11 +36,15 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
         InitSound();
     }
 
-    //Initializes the game for each level.
+    void Update()
+    {
+        KillDeadChannel();
+    }
+
+    //Initializes the sound.
     void InitSound()
     {
-        // sources = new List<AudioSource>();
-        //source = GetComponent<AudioSource>();
+        InitMusicBg();
         Debug.Log("SoundManager initialized");
     }
 
@@ -76,54 +83,66 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
                 AddChannelForPlay(fSound[9]);
                 break;
             case Sound.Bip1:
-                AddChannelForPlay(fSound[0]);
+                AddChannelForPlay(fSound[10]);
                 break;
             case Sound.Bip2:
-                AddChannelForPlay(fSound[1]);
+                AddChannelForPlay(fSound[11]);
                 break;
             case Sound.Bip3:
-                AddChannelForPlay(fSound[2]);
+                AddChannelForPlay(fSound[12]);
                 break;
         }
     }
 
-    void PlayMusicBg(AudioClip music)
+    /// LINK GAME OBJECT SOUND et CHARGE MUSIC DE BASE
+    void InitMusicBg()
     {
-        sourceMusic.clip = music;
-        sourceMusic.Play();
+        sourceMusic = gameObject.GetComponent<AudioSource>();
+        LoadMusic(music);
     }
 
-    void PauseMusicBg()
+    // CHARGE MUSIQUE
+    void LoadMusic(AudioClip audio)
     {
-        sourceMusic.Stop();
+        sourceMusic.clip = audio;
     }
 
+    // LANCE MUSIQUE DE BG
+    void MusicBg(bool musBool) // on off
+    {
+        if (musBool)
+            sourceMusic.Play();
+        else
+            sourceMusic.Stop();
+    }
+
+    // CREE CHANNEL ET LANCE LE SON ASSOCIE
     void AddChannelForPlay(AudioClip audio)
     {
-        sourceMusic = gameObject.AddComponent<AudioSource>();
-        sourceMusic.clip = audio;
-        sourceMusic.Play();
-
-        Debug.Log("Channel Add");
+        GameObject go= new GameObject();
+        sources.Add(go);
+        AudioSource buff;
+        buff = go.AddComponent<AudioSource>();
+        buff.clip = audio;
+        buff.Play();
     }
 
+    // TUE LES CHANNELS DES QUE LE SON EST FINI
     void KillDeadChannel()
     {
         int i;
-        for (i = 0; i < sources.Count; i++)
+        if (sources.Count >= 1)
         {
-            if (!sources[i].isPlaying)
+            for (i=0; i<sources.Count; i++)
             {
-                sources.RemoveAt(i);
-                Debug.Log("Channel Kill");
-                break;
+                if (!sources[i].GetComponent<AudioSource>().isPlaying)
+                {
+                    Destroy(sources[i]);
+                    sources.RemoveAt(i);
+                    break;
+                }
             }
         }
-    }
-
-    void Update()
-    {
-       // KillDeadChannel();
     }
 
 
