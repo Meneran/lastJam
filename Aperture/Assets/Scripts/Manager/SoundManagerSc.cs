@@ -1,14 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class SoundManagerSc : MonoBehaviour {
 
-using System.Collections.Generic;       //Allows us to use Lists. 
-using System.Threading;
-
-public class GameManagerSc : MonoBehaviour
-{
-
-    public static GameManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
+    public static SoundManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
     //Awake is always called before any Start functions
     void Awake()
@@ -35,7 +30,7 @@ public class GameManagerSc : MonoBehaviour
     //Initializes the game for each level.
     void InitGame()
     {
-        Debug.Log("Test");
+        Debug.Log("Initialisation SoundManager");
     }
 
     //Update is called every frame.
