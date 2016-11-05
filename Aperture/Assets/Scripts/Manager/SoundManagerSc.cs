@@ -10,7 +10,7 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
     public AudioClip[] fSound = new AudioClip[13];
 
     AudioSource sourceMusic;
-    List<GameObject> sources;
+    public List<GameObject> sources;
     
     public enum Sound { Laser, Door, RollingStair, ClickOn, ClickOff, Push, Footsteps, Break, Fail, R2D2talk, Bip1, Bip2, Bip3 };
 

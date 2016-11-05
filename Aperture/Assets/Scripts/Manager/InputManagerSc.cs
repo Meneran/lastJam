@@ -54,7 +54,7 @@ public class InputManagerSc : Singleton<InputManagerSc> {
         if (a)
             SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip1);
          if (b)
-             SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip2);
+            SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip2);
          if (x)
             SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip3);
         /* if (y)

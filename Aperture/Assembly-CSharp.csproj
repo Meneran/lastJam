@@ -49,10 +49,14 @@
      <Compile Include="Assets\Scripts\BlockActions\Beam.cs" />
      <Compile Include="Assets\Scripts\BlockActions\ChangingTextureOnActivate.cs" />
      <Compile Include="Assets\Scripts\BlockActions\DefaultBlock.cs" />
+     <Compile Include="Assets\Scripts\BlockActions\MirrorBlock.cs" />
      <Compile Include="Assets\Scripts\BlockActions\TeleportTo.cs" />
      <Compile Include="Assets\Scripts\Generic\Singleton.cs" />
      <Compile Include="Assets\Scripts\Generic\XmlHelpers.cs" />
      <Compile Include="Assets\Scripts\Grab.cs" />
+     <Compile Include="Assets\Scripts\Intro\FloatingLogo.cs" />
+     <Compile Include="Assets\Scripts\Intro\MenuManager.cs" />
+     <Compile Include="Assets\Scripts\Intro\Paralax.cs" />
      <Compile Include="Assets\Scripts\Manager\GameManagerSc.cs" />
      <Compile Include="Assets\Scripts\Manager\InputManagerSc.cs" />
      <Compile Include="Assets\Scripts\Manager\MainManagerSc.cs" />
@@ -65,6 +69,7 @@
      <Compile Include="Assets\Scripts\ObjectManager\ObjectManager.cs" />
      <Compile Include="Assets\Scripts\ObjectManager\TileObject.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Player1.cs" />
      <Compile Include="Assets\Scripts\Player2.cs" />
      <None Include="Assets\Save\level_00.xml" />
      <None Include="Assets\Save\level_01.xml" />
