@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MapObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Objects>
+    <Object>
+      <type>Switch</type>
+      <position>
+        <x>7</x>
+        <y>5</y>
+        <z>0</z>
+      </position>
+    </Object>
+    <Object>
+      <type>Switch</type>
+      <position>
+        <x>8</x>
+        <y>7</y>
+        <z>1</z>
+      </position>
+    </Object>
+  </Objects>
+</MapObject>

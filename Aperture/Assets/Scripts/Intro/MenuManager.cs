@@ -142,8 +142,8 @@ public class MenuManager : MonoBehaviour {
 					break;
 
 				case (StateMenu.LevelSelector):
-					GameManagerSc.Instance.level = selectedMenu;
-					//GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.MeneranScene);
+					GameManagerSc.Instance.level = selectedMenu+1;
+					GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.LevelScene);
 					break;
 
 			}

@@ -95,11 +95,14 @@ public class MapManager : Singleton<MapManager>
 		xDim = map.width;
 		yDim = map.height;
 
+		Debug.Log("Map dim : " + xDim + ";" + yDim);
+
 		for (int x = 0; x < map.width; x++)
 		{
 			for (int y = 0; y < map.height; y++)
 			{
 				int idSprite = findTile(map.GetPixel(x, y));
+
 				mapMatrix[x][y].sprite = idSprite;
 				if (idSprite >= 0)
 				{
