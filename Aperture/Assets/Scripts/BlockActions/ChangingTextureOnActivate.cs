@@ -49,7 +49,8 @@ public class ChangingTextureOnActivate : DefaultBlock {
             isActive = true;
             if (activateOtherBlock)
             {
-                ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().activate();
+                if (ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate) != null)
+                    ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().activate();
             }
         }
     }
@@ -62,7 +63,8 @@ public class ChangingTextureOnActivate : DefaultBlock {
             isActive = false;
             if (activateOtherBlock)
             {
-                ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().desactivate();
+                if (ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate) != null)
+                    ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().desactivate();
             }
         }
     }
@@ -75,7 +77,8 @@ public class ChangingTextureOnActivate : DefaultBlock {
             isActive = false;
             if (activateOtherBlock)
             {
-                ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().changeState();
+                if (ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate) != null)
+                    ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().changeState();
             }
         } else
         {
@@ -83,7 +86,8 @@ public class ChangingTextureOnActivate : DefaultBlock {
             isActive = true;
             if(activateOtherBlock)
             {
-                ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().changeState();
+                if (ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate) != null)
+                    ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().changeState();
             }
         }
     }
