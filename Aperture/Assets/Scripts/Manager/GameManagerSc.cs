@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 using System.Collections.Generic;       //Allows us to use Lists. 
@@ -38,8 +39,9 @@ public class GameManagerSc : Singleton<GameManagerSc>
         Debug.Log("GameManager initialized");
     }
 
-    //Update is called every frame.
-    void Update()
+    void LoadScene(Scene oldScene, Scene newScene)
     {
+
     }
+
 }
