@@ -3,11 +3,11 @@ using System.Collections;
 
 
 
-public class Player2 : Player
+public class Player1 : Player
 {
     public override void move()
     {
-        if (Input.GetAxis("XAxis2") > 0)
+        if (Input.GetAxis("XAxis1") > 0)
         {
             direction = Direction.RIGHT;
             newPos = position + new Vector2(1, 0);
@@ -18,7 +18,7 @@ public class Player2 : Player
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }
-        if (Input.GetAxis("XAxis2") < 0)
+        if (Input.GetAxis("XAxis1") < 0)
         {
             direction = Direction.LEFT;
             newPos = position + new Vector2(-1, 0);
@@ -29,7 +29,7 @@ public class Player2 : Player
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }
-        if (Input.GetAxis("YAxis2") < 0)
+        if (Input.GetAxis("YAxis1") > 0)
         {
             direction = Direction.UP;
             newPos = position + new Vector2(0, 1);
@@ -40,7 +40,7 @@ public class Player2 : Player
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }
-        if (Input.GetAxis("YAxis2") > 0)
+        if (Input.GetAxis("YAxis1") < 0)
         {
             direction = Direction.DOWN;
             newPos = position + new Vector2(0, -1);

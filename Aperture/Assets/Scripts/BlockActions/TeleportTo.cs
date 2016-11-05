@@ -6,7 +6,7 @@ using System.Collections;
 public class TeleportTo : DefaultBlock {
 
     [SerializeField]
-    private Vector3 target;
+    private Vector2 target;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,7 @@ public class TeleportTo : DefaultBlock {
 
     public override void activateOnWalk(GameObject player)
     {
-        gameObject.transform.position = target;
-        player.GetComponent<Transform>().position = target;
+        player.GetComponent<Player>().position = target;
+        player.GetComponent<Transform>().position = target * 0.16f;
     }
 }

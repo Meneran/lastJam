@@ -2,7 +2,7 @@
 <MapObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Objects>
     <Object>
-      <type>Light</type>
+      <type>Teleporter</type>
       <position>
         <x>7</x>
         <y>5</y>
@@ -13,7 +13,7 @@
       <type>Switch</type>
       <position>
         <x>8</x>
-        <y>12</y>
+        <y>7</y>
         <z>1</z>
       </position>
     </Object>
