@@ -9,7 +9,7 @@ public class MapLoader : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		MapManager.Instance.LoadMap(defaultMap);
-		ObjectManager.Instance.SaveMap("level_00.xml");
+		ObjectManager.Instance.SaveMap("level_01.xml");
 		ObjectManager.Instance.LoadMap(defaultLevelObject);
 	}
 	
