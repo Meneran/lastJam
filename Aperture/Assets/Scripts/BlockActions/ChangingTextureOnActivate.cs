@@ -37,6 +37,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
             if (activateOtherBlock)
             {
                 Tile tile MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate);
+            }
         }
     }
 
