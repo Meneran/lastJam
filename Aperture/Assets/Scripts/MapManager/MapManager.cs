@@ -48,7 +48,7 @@ public class MapManager : Singleton<MapManager>
 
 					tempTile.transform.position = new Vector3(x * 0.16f, y * 0.16f, 0);
 
-					Rect tileRect = findRect(mapMatrix[x][y].type);
+					Rect tileRect = findRect(x, y);
 
 					tempTile.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tileSet[type].sprite, tileRect, new Vector2(0.5f, 0.5f));
 				}
@@ -103,11 +103,92 @@ public class MapManager : Singleton<MapManager>
 		return -1;
 	}
 
-	Rect findRect(Type type)
+	Rect findRect(int x, int y)
 	{
+		Type type = GetTile(x, y).type;
+
 		if (type == Type.Wall)
 		{
+			Type[] nearTile = new Type[4];
 
+			nearTile[0] = GetTile(x, y-1).type;
+			nearTile[1] = GetTile(x+1, y).type;
+			nearTile[2] = GetTile(x, y+1).type;
+			nearTile[3] = GetTile(x-1, y).type;
+
+			int xTex = 0;
+			int yTex = 0;
+
+			// Check Wall
+
+			if ((nearTile[0] == Type.Wall) && (nearTile[2] == Type.Wall) && (nearTile[1] == Type.Floor))
+			{
+				xTex = 4;
+				yTex = 0;
+			}
+			else if ((nearTile[0] == Type.Wall) && (nearTile[2] == Type.Wall) && (nearTile[3] == Type.Floor))
+			{
+				xTex = 4;
+				yTex = 1;
+			}
+			else if ((nearTile[1] == Type.Wall) && (nearTile[3] == Type.Wall) && (nearTile[0] == Type.Floor))
+			{
+				xTex = 5;
+				yTex = 1;
+			}
+			else if ((nearTile[1] == Type.Wall) && (nearTile[3] == Type.Wall) && (nearTile[2] == Type.Floor))
+			{
+				xTex = 5;
+				yTex = 0;
+			}
+
+			// Check Corner
+
+			else if ((nearTile[0] == Type.Wall) && (nearTile[1] == Type.Wall) && (nearTile[2] == Type.Back))
+			{
+				xTex = 2;
+				yTex = 1;
+			}
+			else if ((nearTile[1] == Type.Wall) && (nearTile[2] == Type.Wall) && (nearTile[3] == Type.Back))
+			{
+				xTex = 2;
+				yTex = 0;
+			}
+			else if ((nearTile[2] == Type.Wall) && (nearTile[3] == Type.Wall) && (nearTile[0] == Type.Back))
+			{
+				xTex = 3;
+				yTex = 0;
+			}
+			else if ((nearTile[3] == Type.Wall) && (nearTile[0] == Type.Wall) && (nearTile[1] == Type.Back))
+			{
+				xTex = 3;
+				yTex = 1;
+			}
+
+			// Check Angle
+
+			else if ((nearTile[0] == Type.Wall) && (nearTile[1] == Type.Wall) && (nearTile[2] == Type.Floor))
+			{
+				xTex = 0;
+				yTex = 1;
+			}
+			else if ((nearTile[1] == Type.Wall) && (nearTile[2] == Type.Wall) && (nearTile[3] == Type.Floor))
+			{
+				xTex = 0;
+				yTex = 0;
+			}
+			else if ((nearTile[2] == Type.Wall) && (nearTile[3] == Type.Wall) && (nearTile[0] == Type.Floor))
+			{
+				xTex = 1;
+				yTex = 0;
+			}
+			else if ((nearTile[3] == Type.Wall) && (nearTile[0] == Type.Wall) && (nearTile[1] == Type.Floor))
+			{
+				xTex = 1;
+				yTex = 1;
+			}
+
+			return new Rect(16*xTex, 16*yTex, 16, 16);
 		}
 
 		return new Rect(0, 0, 16, 16);
