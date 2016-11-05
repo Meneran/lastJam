@@ -16,7 +16,8 @@ public class GameManagerSc : Singleton<GameManagerSc>
     {
         ManagerScene,
         MenuScene,
-        LevelScene
+        LevelScene,
+        MeneranScene
     }
 
     //Awake is always called before any Start functions
@@ -68,6 +69,9 @@ public class GameManagerSc : Singleton<GameManagerSc>
 
             case SceneUnity.ManagerScene:
                 SceneManager.LoadScene("ManagerScene");
+                break;
+            case SceneUnity.MeneranScene:
+                SceneManager.LoadScene("Meneran");
                 break;
         }
     }
