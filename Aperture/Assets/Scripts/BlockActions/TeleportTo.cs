@@ -21,6 +21,6 @@ public class TeleportTo : DefaultBlock {
     public override void activateOnWalk()
     {
         gameObject.transform.position = target;
-        other.GetComponent<Transform>().position = target.GetComponent<Transform>().position;
+        //other.GetComponent<Transform>().position = target;
     }
 }
