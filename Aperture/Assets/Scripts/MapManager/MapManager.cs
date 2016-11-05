@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class MapManager : Singleton<MapManager>
 {
+	public GameObject mapHolder;
 	public TileSprite[] tileSet;
 
 	List< List< Tile > > mapMatrix;
@@ -44,6 +45,8 @@ public class MapManager : Singleton<MapManager>
 				if (type >= 0)
 				{
 					GameObject tempTile = new GameObject("Tile");
+
+					tempTile.transform.parent = mapHolder.transform;
 					tempTile.AddComponent<SpriteRenderer>();
 
 					tempTile.transform.position = new Vector3(x * 0.16f, y * 0.16f, 0);
