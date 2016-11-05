@@ -15,6 +15,7 @@ public class MirrorBlock : DefaultBlock {
 
 	// Use this for initialization
 	void Start () {
+        lazerBeam = null;
         switch (direction1)
         {
             case Direction.UP :
@@ -54,8 +55,8 @@ public class MirrorBlock : DefaultBlock {
 
     public void activateMirror(GameObject beam)
     {
+        lazerBeam = beam;
         Beam beamComponent = beam.GetComponent<Beam>();
-        Debug.Log("beam direction = " + beamComponent.getLazerDirection());
         if(beamComponent.getLazerDirection() == direction1_opposite)
         {
             beamComponent.reflect(direction2);
@@ -63,6 +64,23 @@ public class MirrorBlock : DefaultBlock {
         else if(beamComponent.getLazerDirection() == direction2_opposite)
         {
             beamComponent.reflect(direction1);
+        }
+        else if(beamComponent.getLazerDirection() == direction1)
+        {
+            beamComponent.reflect(direction2_opposite);
+        }
+        else if(beamComponent.getLazerDirection() == direction2)
+        {
+            beamComponent.reflect(direction1_opposite);
+        }
+    }
+
+    public override void activate()
+    {
+        if(lazerBeam != null)
+        {
+            lazerBeam.GetComponent<Beam>().reset();
+            lazerBeam = null;
         }
     }
 }
