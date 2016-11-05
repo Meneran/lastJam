@@ -7,7 +7,7 @@ public class Player1 : Player
 {
     public override void move()
     {
-        if (Input.GetAxis("XAxis1") > 0)
+        if (InputManagerSc.Instance.rightP1)
         {
             hasMoved = true;
             direction = Direction.RIGHT;
@@ -19,7 +19,7 @@ public class Player1 : Player
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }
-        if (Input.GetAxis("XAxis1") < 0)
+        if (InputManagerSc.Instance.leftP1)
         {
             hasMoved = true;
             direction = Direction.LEFT;
@@ -31,7 +31,7 @@ public class Player1 : Player
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }
-        if (Input.GetAxis("YAxis1") > 0)
+        if (InputManagerSc.Instance.upP1)
         {
             hasMoved = true;
             direction = Direction.UP;
@@ -43,7 +43,7 @@ public class Player1 : Player
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
         }
-        if (Input.GetAxis("YAxis1") < 0)
+        if (InputManagerSc.Instance.downP1)
         {
             hasMoved = true;
             direction = Direction.DOWN;
