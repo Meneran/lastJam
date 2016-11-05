@@ -11,7 +11,8 @@ public enum ObjectType
 	Teleporter,
     Beam,
     Mirror,
-    Door
+    Door,
+    DoorPivoted
 }
 
 [System.Serializable]
