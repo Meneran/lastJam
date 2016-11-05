@@ -9,7 +9,7 @@ public class PlayerManager : Singleton<PlayerManager>
 	{
 		if (playerArray.Length > i)
 		{
-			playerArray[i].transform.position = new Vector3(x * 0.16f, y * 0.16f, -0.2f);
+			//playerArray[i].transform.position = new Vector3(x * 0.16f, y * 0.16f, -0.2f);
 		}
 	}
 

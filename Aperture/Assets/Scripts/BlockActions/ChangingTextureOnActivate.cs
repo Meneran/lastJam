@@ -18,11 +18,15 @@ public class ChangingTextureOnActivate : DefaultBlock {
     [SerializeField]
     private bool activateOtherBlock;
 
+    //[SerializeField]
+    //public bool allowToPass;
     [SerializeField]
-    private bool isActive;
+    public bool isActive;
 
-	// Use this for initialization
-	void Start () {
+
+
+    // Use this for initialization
+    void Start () {
         if (isActive)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;

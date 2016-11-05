@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\BlockActions\Beam.cs" />
     <Compile Include="Assets\Scripts\BlockActions\ChangingTextureOnActivate.cs" />
     <Compile Include="Assets\Scripts\BlockActions\DefaultBlock.cs" />
+    <Compile Include="Assets\Scripts\BlockActions\Door.cs" />
     <Compile Include="Assets\Scripts\BlockActions\MirrorBlock.cs" />
     <Compile Include="Assets\Scripts\BlockActions\RollingStairBlocks.cs" />
     <Compile Include="Assets\Scripts\BlockActions\TeleportTo.cs" />

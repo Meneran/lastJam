@@ -18,6 +18,8 @@ public class Player1 : Player
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
+            if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
+                newPos = position;
         }
         if (InputManagerSc.Instance.leftP1)
         {
@@ -30,6 +32,8 @@ public class Player1 : Player
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
+            if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
+                newPos = position;
         }
         if (InputManagerSc.Instance.upP1)
         {
@@ -42,6 +46,8 @@ public class Player1 : Player
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
+            if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
+                newPos = position;
         }
         if (InputManagerSc.Instance.downP1)
         {
@@ -54,6 +60,8 @@ public class Player1 : Player
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
+            if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
+                newPos = position;
         }
     }
 }

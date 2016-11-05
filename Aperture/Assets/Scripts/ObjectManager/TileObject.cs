@@ -10,7 +10,8 @@ public enum ObjectType
 	Box,
 	Teleporter,
     Beam,
-    Mirror
+    Mirror,
+    Door
 }
 
 [System.Serializable]
