@@ -109,12 +109,15 @@ public class MenuManager : MonoBehaviour {
 
 	void ExecuteAction(int type = -1)
 	{
-		if ((type == 0) && (state != StateMenu.Start))
+		if (type == 0)
 		{
-			OnLeave(std_object[selectedMenu]);
-			clock = timer;
-			state = StateMenu.Start;
-			Init(btn_object);
+			if (state != StateMenu.Start)
+			{
+				OnLeave(std_object[selectedMenu]);
+				clock = timer;
+				state = StateMenu.Start;
+				Init(btn_object);
+			}
 		}
 		else if (state == StateMenu.Start)
 		{

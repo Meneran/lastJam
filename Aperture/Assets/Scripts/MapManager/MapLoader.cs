@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
 public class MapLoader : MonoBehaviour {
 	
 	public Texture2D defaultMap;
 	public TextAsset defaultLevelObject;
 
-	// Use this for initialization
 	void Start () {
 		MapManager.Instance.LoadMap(defaultMap);
         //ObjectManager.Instance.SaveMap("level_01.xml");
@@ -16,8 +16,13 @@ public class MapLoader : MonoBehaviour {
         ObjectManager.Instance.LoadSprite();
     }
 	
-	// Update is called once per frame
-	void Update () {
-	
+	void LoadMap (int level)
+	{
+		byte[] texData;
+		texData = File.ReadAllBytes(Application.dataPath + "/Save/level_" + level + ".png");
+		defaultMap.LoadImage(texData);
+
+		defaultLevelObject = Resources.Load(Application.dataPath + "/Save/level_" + level + ".xml") as TextAsset;
+		ObjectManager.Instance.LoadMap(defaultLevelObject);
 	}
 }
