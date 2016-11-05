@@ -46,7 +46,7 @@ public class DefaultBlock : MonoBehaviour {
 
     }
 
-    public virtual void activateOnWalk()
+    public virtual void activateOnWalk(GameObject player)
     {
 
     }
