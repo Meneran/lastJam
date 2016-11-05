@@ -95,6 +95,8 @@ public class ObjectManager : Singleton<ObjectManager>
 					objectMatrix[x, y].gameObject.transform.position = new Vector3(x * 0.16f, y * 0.16f, -0.1f);
 
 					objectMatrix[x, y].gameObject.GetComponent<SpriteRenderer>().sprite = Sprite.Create(spriteArray[j].sprite, new Rect(0, 0, 16, 16), new Vector2(0.5f, 0.5f));
+
+					objectMatrix[x, y].gameObject.AddComponent<DefaultBlock>();
 				}
 			}
 		}
