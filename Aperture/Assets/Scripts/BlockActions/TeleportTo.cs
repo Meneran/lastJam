@@ -3,10 +3,10 @@ using System.Collections;
 
 /*@Brief Teleport entered object to target location, need trigger to work*/
 
-public class TeleportTo : MonoBehaviour {
+public class TeleportTo : DefaultBlock {
 
     [SerializeField]
-    private GameObject target;
+    private Vector3 target;
 
 	// Use this for initialization
 	void Start () {
@@ -18,9 +18,9 @@ public class TeleportTo : MonoBehaviour {
 	
 	}
 
-    void OnTriggerEnter2D(Collider2D other)
+    public override void activateOnWalk(GameObject player)
     {
-        Debug.Log("called");
-        other.transform.position = target.GetComponent<Transform>().position;
+        gameObject.transform.position = target;
+        player.GetComponent<Transform>().position = target;
     }
 }

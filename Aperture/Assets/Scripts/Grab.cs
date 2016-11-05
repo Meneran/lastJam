@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Action : MonoBehaviour {
+public class Grab : MonoBehaviour {
 
-    private Direction direction;
+    private Vector3 target;
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +12,8 @@ public class Action : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        direction = GetComponent<Player>().getDirection();
+	
 	}
+
+
 }
