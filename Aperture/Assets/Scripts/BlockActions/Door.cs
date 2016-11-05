@@ -14,8 +14,16 @@ public class Door : DefaultBlock {
         for (int i = 0; i < PlayerManager.Instance.playerArray.Length; ++i)
         {
             if (gameObject.GetComponent<ChangingTextureOnActivate>().isActive)
-                if (new Vector2(transform.position.x, transform.position.y) / 0.16f == PlayerManager.Instance.getPlayerCoord(i))
-                    Debug.Log("Gagne");
+                if (new Vector2(transform.position.x, transform.position.y - 0.16f) / 0.16f == PlayerManager.Instance.getPlayerCoord(i))
+                {
+                    if (PlayerManager.Instance.playerArray[i].GetComponent<Player>().direction == Direction.UP)
+                    {
+                        //PlayerManager.Instance.playerArray[i].GetComponent<Player>()
+                        GameManagerSc.Instance.level++;
+                        GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.LevelScene);
+                    }
+                }
+
         }
     }
 }

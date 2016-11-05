@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
             timer = saveTimer;
             oldPos = position;
             move();
+            action();
         }
 
         if (new Vector3(newPos.x * tileSize, newPos.y * tileSize, 0) != transform.position - new Vector3(0, offset, 0))
@@ -76,6 +77,10 @@ public class Player : MonoBehaviour
     }
 
     public virtual void move()
+    {
+
+    }
+    public virtual void action()
     {
 
     }

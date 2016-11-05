@@ -7,7 +7,6 @@ public class Player1 : Player
 {
     public override void move()
     {
-        //if (Input.GetAxis("XAxis1") > 0)
         if (InputManagerSc.Instance.rightP1)
         {
             hasMoved = true;
@@ -63,6 +62,24 @@ public class Player1 : Player
                     newPos = position;
             if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
                 newPos = position;
+        }
+    }
+
+    public override void action()
+    {
+        if (InputManagerSc.Instance.act1P1)
+        {
+            switch(direction)
+            {
+                case (Direction.UP):
+                    break;
+                case (Direction.DOWN):
+                    break;
+                case (Direction.LEFT):
+                    break;
+                case (Direction.RIGHT):
+                    break;
+            }
         }
     }
 }
