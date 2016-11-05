@@ -3,9 +3,11 @@ using System.Collections;
 
 public enum TileType
 {
-	Floor,
+	Ceil,
 	Wall,
-	Back
+	Floor,
+	WallVoid,
+	Void
 }
 
 public class Tile
