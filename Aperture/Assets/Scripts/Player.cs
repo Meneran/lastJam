@@ -11,9 +11,12 @@ public enum Direction
 
 public class Player : MonoBehaviour
 {
+    private Vector2 position;
+    [SerializeField]
+    int startX, startY;
     public Direction direction;
     private Vector3 move;
-    private Vector3 newPos;
+    private Vector2 newPos;
     private bool horizontal, vertical;
     [SerializeField]
     private float tileSize;
@@ -25,61 +28,59 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        position = new Vector2(startX, startY);
+        transform.position = MapManager.Instance.GetCoord(startX, startY);
         timer = saveTimer;
-        newPos = transform.position;
+        newPos = position;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer < 0 && transform.position == newPos)
+        if (timer < 0 && position == newPos)
         {
             timer = saveTimer;
             if (Input.GetButton("Right"))
             {
-                //transform.localEulerAngles = (new Vector3(0, 0, 0));
                 direction = Direction.RIGHT;
-                newPos = transform.position + new Vector3(1, 0, 0) * tileSize;
+                newPos = position + new Vector2(1, 0);
                 move = new Vector3(1, 0, 0) * tileSize / 10;
-                //if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type != Type.Floor)
-                //    newPos = transform.position;
-                //transform.position += new Vector3(1, 0, 0) * tileSize;
+                if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
+                    newPos = position;
             }
             if (Input.GetButton("Left"))
             {
-                //transform.localEulerAngles = (new Vector3(0, 0, 180));
                 direction = Direction.LEFT;
-                newPos = transform.position + new Vector3(-1, 0, 0) * tileSize;
+                newPos = position + new Vector2(-1, 0);
                 move = new Vector3(-1, 0, 0) * tileSize / 10;
-                //if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type != Type.Floor)
-                //    newPos = transform.position;
-                //transform.position += new Vector3(-1, 0, 0) * tileSize;
+                if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
+                    newPos = position;
             }
             if (Input.GetButton("Up"))
             {
-                //transform.localEulerAngles = (new Vector3(0, 0, 90));
                 direction = Direction.UP;
-                newPos = transform.position + new Vector3(0, 1, 0) * tileSize;
+                newPos = position + new Vector2(0, 1);
                 move = new Vector3(0, 1, 0) * tileSize / 10;
-                //if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type != Type.Floor)
-                //    newPos = transform.position;
-                //transform.position += new Vector3(0, 1, 0) * tileSize;
+                if (MapManager.Instance.GetTile((int)(Mathf.Round(newPos.x)), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
+                    newPos = position;
             }
             if (Input.GetButton("Down"))
             {
-                //transform.localEulerAngles = (new Vector3(0, 0, -90));
                 direction = Direction.DOWN;
-                newPos = transform.position + new Vector3(0, -1, 0) * tileSize;
+                newPos = position + new Vector2(0, -1);
                 move = new Vector3(0, -1, 0) * tileSize / 10;
-                //if (MapManager.Instance.GetTile((int)newPos.x, (int)newPos.y).type != Type.Floor)
-                //    newPos = transform.position;
-                //transform.position += new Vector3(0, -1, 0) * tileSize;
+                if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
+                    newPos = position;
             }
         }
-        if (transform.position != newPos)
+        if (new Vector3(newPos.x * tileSize, newPos.y * tileSize, 0) != transform.position)
         {
             transform.position += move;
+        }
+        else
+        {
+            position = newPos;
         }
         GetComponent<Animator>().SetInteger("direction", (int)direction);
     }
