@@ -8,7 +8,9 @@ public enum ObjectType
 	Light,
 	Switch,
 	Box,
-	Teleporter
+	Teleporter,
+    Beam,
+    Mirror
 }
 
 [System.Serializable]

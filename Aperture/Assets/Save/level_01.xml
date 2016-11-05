@@ -9,13 +9,5 @@
         <z>0</z>
       </position>
     </Object>
-    <Object>
-      <type>Switch</type>
-      <position>
-        <x>8</x>
-        <y>12</y>
-        <z>1</z>
-      </position>
-    </Object>
   </Objects>
 </MapObject>
