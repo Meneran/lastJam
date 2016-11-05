@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Type
+public enum TileType
 {
 	Floor,
 	Wall,
 	Back
 }
 
-public class Tile : MonoBehaviour
+public class Tile
 {
 	public int sprite;
-	public Type type;
+	public TileType type;
 
-	public Tile (int sprite, Type type)
+	public Tile (int sprite, TileType type)
 	{
 		this.sprite = sprite;
 		this.type = type;

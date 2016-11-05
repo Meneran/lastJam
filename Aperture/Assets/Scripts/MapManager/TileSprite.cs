@@ -6,5 +6,5 @@ public struct TileSprite
 {
 	public Texture2D sprite;
 	public Color color;
-	public Type type;
+	public TileType type;
 }

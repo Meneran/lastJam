@@ -30,7 +30,7 @@ public class MapManager : Singleton<MapManager>
 		}
 		else
 		{
-			return new Tile(-1, Type.Back);
+			return new Tile(-1, TileType.Back);
 		}
 	}
 
@@ -113,11 +113,11 @@ public class MapManager : Singleton<MapManager>
 
 	Rect findRect(int x, int y)
 	{
-		Type type = GetTile(x, y).type;
+		TileType type = GetTile(x, y).type;
 
-		if (type == Type.Wall)
+		if (type == TileType.Wall)
 		{
-			Type[] nearTile = new Type[4];
+			TileType[] nearTile = new TileType[4];
 
 			nearTile[0] = GetTile(x, y-1).type;
 			nearTile[1] = GetTile(x+1, y).type;
@@ -129,22 +129,22 @@ public class MapManager : Singleton<MapManager>
 
 			// Check Wall
 
-			if ((nearTile[0] == Type.Wall) && (nearTile[2] == Type.Wall) && (nearTile[1] == Type.Floor))
+			if ((nearTile[0] == TileType.Wall) && (nearTile[2] == TileType.Wall) && (nearTile[1] == TileType.Floor))
 			{
 				xTex = 4;
 				yTex = 0;
 			}
-			else if ((nearTile[0] == Type.Wall) && (nearTile[2] == Type.Wall) && (nearTile[3] == Type.Floor))
+			else if ((nearTile[0] == TileType.Wall) && (nearTile[2] == TileType.Wall) && (nearTile[3] == TileType.Floor))
 			{
 				xTex = 4;
 				yTex = 1;
 			}
-			else if ((nearTile[1] == Type.Wall) && (nearTile[3] == Type.Wall) && (nearTile[0] == Type.Floor))
+			else if ((nearTile[1] == TileType.Wall) && (nearTile[3] == TileType.Wall) && (nearTile[0] == TileType.Floor))
 			{
 				xTex = 5;
 				yTex = 1;
 			}
-			else if ((nearTile[1] == Type.Wall) && (nearTile[3] == Type.Wall) && (nearTile[2] == Type.Floor))
+			else if ((nearTile[1] == TileType.Wall) && (nearTile[3] == TileType.Wall) && (nearTile[2] == TileType.Floor))
 			{
 				xTex = 5;
 				yTex = 0;
@@ -152,22 +152,22 @@ public class MapManager : Singleton<MapManager>
 
 			// Check Corner
 
-			else if ((nearTile[0] == Type.Wall) && (nearTile[1] == Type.Wall) && (nearTile[2] == Type.Back))
+			else if ((nearTile[0] == TileType.Wall) && (nearTile[1] == TileType.Wall) && (nearTile[2] == TileType.Back))
 			{
 				xTex = 2;
 				yTex = 1;
 			}
-			else if ((nearTile[1] == Type.Wall) && (nearTile[2] == Type.Wall) && (nearTile[3] == Type.Back))
+			else if ((nearTile[1] == TileType.Wall) && (nearTile[2] == TileType.Wall) && (nearTile[3] == TileType.Back))
 			{
 				xTex = 2;
 				yTex = 0;
 			}
-			else if ((nearTile[2] == Type.Wall) && (nearTile[3] == Type.Wall) && (nearTile[0] == Type.Back))
+			else if ((nearTile[2] == TileType.Wall) && (nearTile[3] == TileType.Wall) && (nearTile[0] == TileType.Back))
 			{
 				xTex = 3;
 				yTex = 0;
 			}
-			else if ((nearTile[3] == Type.Wall) && (nearTile[0] == Type.Wall) && (nearTile[1] == Type.Back))
+			else if ((nearTile[3] == TileType.Wall) && (nearTile[0] == TileType.Wall) && (nearTile[1] == TileType.Back))
 			{
 				xTex = 3;
 				yTex = 1;
@@ -175,22 +175,22 @@ public class MapManager : Singleton<MapManager>
 
 			// Check Angle
 
-			else if ((nearTile[0] == Type.Wall) && (nearTile[1] == Type.Wall) && (nearTile[2] == Type.Floor))
+			else if ((nearTile[0] == TileType.Wall) && (nearTile[1] == TileType.Wall) && (nearTile[2] == TileType.Floor))
 			{
 				xTex = 0;
 				yTex = 1;
 			}
-			else if ((nearTile[1] == Type.Wall) && (nearTile[2] == Type.Wall) && (nearTile[3] == Type.Floor))
+			else if ((nearTile[1] == TileType.Wall) && (nearTile[2] == TileType.Wall) && (nearTile[3] == TileType.Floor))
 			{
 				xTex = 0;
 				yTex = 0;
 			}
-			else if ((nearTile[2] == Type.Wall) && (nearTile[3] == Type.Wall) && (nearTile[0] == Type.Floor))
+			else if ((nearTile[2] == TileType.Wall) && (nearTile[3] == TileType.Wall) && (nearTile[0] == TileType.Floor))
 			{
 				xTex = 1;
 				yTex = 0;
 			}
-			else if ((nearTile[3] == Type.Wall) && (nearTile[0] == Type.Wall) && (nearTile[1] == Type.Floor))
+			else if ((nearTile[3] == TileType.Wall) && (nearTile[0] == TileType.Wall) && (nearTile[1] == TileType.Floor))
 			{
 				xTex = 1;
 				yTex = 1;
