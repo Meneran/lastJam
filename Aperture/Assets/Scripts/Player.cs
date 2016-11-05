@@ -84,9 +84,4 @@ public class Player : MonoBehaviour
         }
         GetComponent<Animator>().SetInteger("direction", (int)direction);
     }
-
-    public Direction getDirection()
-    {
-        return direction;
-    }
 }
