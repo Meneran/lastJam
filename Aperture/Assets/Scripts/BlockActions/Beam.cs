@@ -9,16 +9,33 @@ public class Beam : DefaultBlock {
     private Vector2 BeamPosition;
     private int Xint_BeamPosition;
     private int Yint_BeamPosition;
-    private Vector3 Zoffset = new Vector3(0, 0, -1);
+    private Vector3 Zoffset = new Vector3(0, 0, -0.5f);
+
+    [SerializeField]
+    private Sprite[] spriteArray;
 
     private int finalLineRendererPoint;
 
 	// Use this for initialization
 	void Start () {
-        GetComponent<LineRenderer>().SetPosition(0,transform.position + Zoffset);
+        gameObject.GetComponent<SpriteRenderer>().sprite = spriteArray[(int)direction];
+        switch(direction)
+        {
+            case Direction.UP:
+                GetComponent<LineRenderer>().SetPosition(0,transform.position + Zoffset + new Vector3(0, 0.06f, 0));    
+                break;
+            case Direction.DOWN:
+                GetComponent<LineRenderer>().SetPosition(0, transform.position + Zoffset + new Vector3(0, -0.05f, 0));
+                break;
+            case Direction.RIGHT:
+                GetComponent<LineRenderer>().SetPosition(0, transform.position + Zoffset + new Vector3(0.06f, 0, 0));
+                break;
+            case Direction.LEFT:
+                GetComponent<LineRenderer>().SetPosition(0, transform.position + Zoffset + new Vector3(-0.06f, 0, 0));
+                break;
+        }
         BeamPosition = MapManager.Instance.GetTileCoord(new Vector2(transform.position.x, transform.position.y));
         finalLineRendererPoint = 1;
-
     }
 	
 	// Update is called once per frame
