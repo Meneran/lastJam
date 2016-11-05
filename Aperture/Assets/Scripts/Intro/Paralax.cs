@@ -16,6 +16,6 @@ public class Paralax : MonoBehaviour {
 	{
 		float offset = Time.time * scrollSpeed;
 		//Debug.Log(offset);
-		background.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		background.material.SetTextureOffset("_MainTex", new Vector2(offset, offset));
 	}
 }
