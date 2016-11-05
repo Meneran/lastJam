@@ -36,7 +36,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;
             if (activateOtherBlock)
             {
-                Tile tile MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate);
+               // Tile tile MapManager.Instance.GetTile(XposOfBlockToActivate, YposOfBlockToActivate);
             }
         }
     }

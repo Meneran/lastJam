@@ -1,14 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class InputManagerSc : Singleton<InputManagerSc> {
 
-using System.Collections.Generic;       //Allows us to use Lists. 
-using System.Threading;
-
-public class GameManagerSc : Singleton<GameManagerSc>
-{
-
-    public static GameManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
+    public static InputManagerSc instance = null;              //Static instance of InputManager which allows it to be accessed by any other script.
 
     //Awake is always called before any Start functions
     void Awake()
@@ -22,7 +17,7 @@ public class GameManagerSc : Singleton<GameManagerSc>
         //If instance already exists and it's not this:
         else if (instance != this)
 
-            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a InputManager.
             Destroy(gameObject);
 
         //Sets this to not be destroyed when reloading scene
@@ -35,7 +30,7 @@ public class GameManagerSc : Singleton<GameManagerSc>
     //Initializes the game for each level.
     void InitGame()
     {
-        Debug.Log("GameManager initialized");
+        Debug.Log("InputManager initialized");
     }
 
     //Update is called every frame.

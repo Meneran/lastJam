@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SoundManagerSc : MonoBehaviour {
+public class SoundManagerSc : Singleton<SoundManagerSc>
+{
 
-    public static SoundManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
+    public static SoundManagerSc instance = null;              //Static instance of SoundManager which allows it to be accessed by any other script.
 
     //Awake is always called before any Start functions
     void Awake()
@@ -17,7 +18,7 @@ public class SoundManagerSc : MonoBehaviour {
         //If instance already exists and it's not this:
         else if (instance != this)
 
-            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a SoundManagerSc.
             Destroy(gameObject);
 
         //Sets this to not be destroyed when reloading scene
@@ -30,7 +31,7 @@ public class SoundManagerSc : MonoBehaviour {
     //Initializes the game for each level.
     void InitGame()
     {
-        Debug.Log("Initialisation SoundManager");
+        Debug.Log("SoundManager initialized");
     }
 
     //Update is called every frame.
