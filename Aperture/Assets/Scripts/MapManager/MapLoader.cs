@@ -9,19 +9,23 @@ public class MapLoader : MonoBehaviour {
 
 	void Start ()
 	{
-		if (GameManagerSc.instance.level > 0)
+        if (defaultMap != null)
+        {
+            Debug.Log("Custom scene");
+
+            MapManager.Instance.LoadMap(defaultMap);
+
+            ObjectManager.Instance.InitMatrix();
+            ObjectManager.Instance.LoadSprite();
+        }
+        else if (GameManagerSc.Instance.level > 0)
 		{
 			defaultMap = new Texture2D(1, 1);
 			defaultLevelObject = new TextAsset();
 
-			LoadMap(GameManagerSc.instance.level);
-		}
-		else if (defaultMap != null)
-		{
-			MapManager.Instance.LoadMap(defaultMap);
+            Debug.Log("Scene loaded from manager");
 
-			ObjectManager.Instance.InitMatrix();
-			ObjectManager.Instance.LoadSprite();
+			LoadMap(GameManagerSc.Instance.level);
 		}
 
 		//ObjectManager.Instance.SaveMap("level_01.xml");
