@@ -37,7 +37,7 @@ public class ObjectManager : Singleton<ObjectManager>
 
 	public void SaveMap(string path)
 	{
-		XmlHelpers.SaveToXML<MapObject>(Application.dataPath + "/Save/" + path, mapObject);
+		XmlHelpers.SaveToXML<MapObject>(Application.dataPath + "/Resources/Save/" + path, mapObject);
 	}
 
 	public void LoadMap(TextAsset level)
