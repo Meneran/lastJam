@@ -20,7 +20,10 @@ public class TeleportTo : DefaultBlock {
 
     public override void activateOnWalk()
     {
+<<<<<<< HEAD
         gameObject.transform.position = target;
+=======
+>>>>>>> parent of 111e127... Action Script Added
         other.GetComponent<Transform>().position = target.GetComponent<Transform>().position;
     }
 }
