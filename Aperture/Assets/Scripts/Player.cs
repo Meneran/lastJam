@@ -10,6 +10,8 @@ public enum Direction
 };
 public class Player : MonoBehaviour
 {
+    protected GameObject isActivate;
+    protected Vector2 isActivatePos;
     protected bool hasMoved;
     public Vector2 position;
     [SerializeField]
@@ -25,7 +27,7 @@ public class Player : MonoBehaviour
     protected float saveTimer;
     protected float timer;
     [SerializeField]
-    protected float offset;
+    public float offset;
 
     // Use this for initialization
     void Start()
@@ -35,13 +37,14 @@ public class Player : MonoBehaviour
         transform.position += new Vector3(0, offset, 0);
         timer = saveTimer;
         newPos = position;
+        Debug.Log("position " + position);
+        Debug.Log("newPos" + newPos);
+        Debug.Log("transform " + transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(this.position);
-        Debug.Log(this.newPos);
         timer -= Time.deltaTime;
         if (timer < 0 && position == newPos)
         {
@@ -62,13 +65,16 @@ public class Player : MonoBehaviour
 
         if (ObjectManager.Instance.GetGameObject((int)position.x, (int)position.y) != null && hasMoved)
         {
-            ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().activateOnWalk(gameObject);
+            isActivate = ObjectManager.Instance.GetGameObject((int)position.x, (int)position.y);
+            isActivatePos = new Vector2(position.x, position.y);
+            if (isActivate.GetComponent<DefaultBlock>() != null)
+                isActivate.GetComponent<DefaultBlock>().activateOnWalk(gameObject);
             hasMoved = false;
         }
 
         if (ObjectManager.Instance.GetGameObject((int)oldPos.x, (int)oldPos.y) != null && hasMoved)
         {
-            ObjectManager.Instance.GetGameObject((int)oldPos.x, (int)oldPos.y).GetComponent<DefaultBlock>().activateOnWalk(gameObject);
+            isActivate.GetComponent<DefaultBlock>().activateOnWalk(gameObject);
         }
     }
 
