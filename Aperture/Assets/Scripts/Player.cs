@@ -19,13 +19,14 @@ public class Player : MonoBehaviour
     void Start()
     {
         timer = saveTimer;
+        newPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer < 0)
+        if (timer < 0 && transform.position == newPos)
         {
             timer = saveTimer;
             if (Input.GetButton("Right"))
