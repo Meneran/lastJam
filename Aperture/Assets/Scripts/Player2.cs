@@ -14,14 +14,23 @@ public class Player2 : Player
             newPos = position + new Vector2(1, 0);
             moveVector = new Vector3(1, 0, 0) * tileSize / 10;
             if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
+            {
+                hasMoved = false;
                 newPos = position;
+            }
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
+                {
+                    hasMoved = false;
                     newPos = position;
+                }
             for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
             {
                 if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                {
                     newPos = position;
+                    hasMoved = false;
+                }
             }
             if (PlayerManager.Instance.getPlayerCoord(0) == newPos)
                 newPos = position;
@@ -33,57 +42,93 @@ public class Player2 : Player
             newPos = position + new Vector2(-1, 0);
             moveVector = new Vector3(-1, 0, 0) * tileSize / 10;
             if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
+            {
                 newPos = position;
+                hasMoved = false;
+            }
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
+                {
                     newPos = position;
+                    hasMoved = false;
+                }
             for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
             {
                 if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                {
                     newPos = position;
+                    hasMoved = false;
+                }
             }
             if (PlayerManager.Instance.getPlayerCoord(0) == newPos)
+            {
+                hasMoved = false;
                 newPos = position;
+            }
         }
         if (InputManagerSc.Instance.upP2)
         {
-            hasMoved = true;
-            direction = Direction.UP;
-            newPos = position + new Vector2(0, 1);
-            moveVector = new Vector3(0, 1, 0) * tileSize / 10;
-            if (MapManager.Instance.GetTile((int)(Mathf.Round(newPos.x)), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
-                newPos = position;
-            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
-                if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
+                hasMoved = true;
+                direction = Direction.UP;
+                newPos = position + new Vector2(0, 1);
+                moveVector = new Vector3(0, 1, 0) * tileSize / 10;
+                if (MapManager.Instance.GetTile((int)(Mathf.Round(newPos.x)), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
+                {
                     newPos = position;
-            for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
-            {
-                if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                    hasMoved = false;
+                }
+                if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
+                    if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
+                    {
+                        newPos = position;
+                        hasMoved = false;
+                    }
+                for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+                {
+                    if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                    {
+                        newPos = position;
+                        hasMoved = false;
+                    }
+                }
+                if (PlayerManager.Instance.getPlayerCoord(0) == newPos)
+                {
                     newPos = position;
+                    hasMoved = false;
+                }
             }
-            if (PlayerManager.Instance.getPlayerCoord(0) == newPos)
-                newPos = position;
-        }
-        if (InputManagerSc.Instance.downP2)
-        {
-            hasMoved = true;
-            direction = Direction.DOWN;
-            newPos = position + new Vector2(0, -1);
-            moveVector = new Vector3(0, -1, 0) * tileSize / 10;
-            if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
-                newPos = position;
-            if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
-                if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
-                    newPos = position;
-            for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+            if (InputManagerSc.Instance.downP2)
             {
-                if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                hasMoved = true;
+                direction = Direction.DOWN;
+                newPos = position + new Vector2(0, -1);
+                moveVector = new Vector3(0, -1, 0) * tileSize / 10;
+                if (MapManager.Instance.GetTile((int)Mathf.Round(newPos.x), (int)Mathf.Round(newPos.y)).type != TileType.Floor)
+                {
                     newPos = position;
+                    hasMoved = false;
+                }
+                if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
+                    if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
+                    {
+                        newPos = position;
+                        hasMoved = false;
+                    }
+                for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+                {
+                    if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                    {
+                        newPos = position;
+                        hasMoved = false;
+                    }
+                }
+                if (PlayerManager.Instance.getPlayerCoord(0) == newPos)
+                {
+                    newPos = position;
+                    hasMoved = false;
+                }
             }
-            if (PlayerManager.Instance.getPlayerCoord(0) == newPos)
-                newPos = position;
         }
-    }
 
     public override void action()
     {

@@ -32,7 +32,7 @@ public class ObjectManager : Singleton<ObjectManager>
 	public MapObject mapObject;
 	public ObjectSprite[] spriteArray;
 
-	ObjectContainer[,] objectMatrix;
+	public ObjectContainer[,] objectMatrix;
 
 	public GameObject objectHolder;
 

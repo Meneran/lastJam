@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Beam : DefaultBlock {
 
+
     [SerializeField]
     private Direction direction;
-
+    private Direction directionInit;
     private Vector2 BeamPosition;
     private int Xint_BeamPosition;
     private int Yint_BeamPosition;
@@ -20,17 +21,18 @@ public class Beam : DefaultBlock {
 
     private int finalLineRendererPoint;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
+        directionInit = direction;
         beamLock = false;
         deplacement = false;
         finalLineRendererPoint = 1;
         arrayOfBeamPoints = new Vector3[finalLineRendererPoint + 1];
         gameObject.GetComponent<SpriteRenderer>().sprite = spriteArray[(int)direction];
-        switch(direction)
+        switch (direction)
         {
             case Direction.UP:
-                arrayOfBeamPoints[0] = transform.position + Zoffset + new Vector3(0, 0.06f, 0.1f);   
+                arrayOfBeamPoints[0] = transform.position + Zoffset + new Vector3(0, 0.06f, 0.1f);
                 break;
             case Direction.DOWN:
                 arrayOfBeamPoints[0] = transform.position + Zoffset + new Vector3(0, -0.05f, 0.1f);
@@ -47,9 +49,10 @@ public class Beam : DefaultBlock {
         arrayOfBeamPoints[finalLineRendererPoint] = transform.position + Zoffset;
         GetComponent<LineRenderer>().SetPosition(1, arrayOfBeamPoints[finalLineRendererPoint]);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         deplacement = false;
         Xint_BeamPosition = Mathf.RoundToInt(BeamPosition.x);
         Yint_BeamPosition = Mathf.RoundToInt(BeamPosition.y);
@@ -100,21 +103,35 @@ public class Beam : DefaultBlock {
             }
         }
         if (deplacement)
-        {
-            GameObject mirror = ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition);
-            if (mirror != null)
+
+            for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
             {
-                if (ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).CompareTag("mirror"))
+
+
+                if (DynamicObjectManager.Instance.getObjectCoord(i) == new Vector2(Xint_BeamPosition, Yint_BeamPosition))
                 {
-                    ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).GetComponent<MirrorBlock>().activateMirror(gameObject);
-                } else
-                {
-                    mirror.GetComponent<DefaultBlock>().activate();
-                    beamLock = true;
+                    GameObject mirror = DynamicObjectManager.Instance.objectArray[i];
+                    //GameObject mirror = ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition);
+                    if (mirror != null)
+                    {
+                        //if (ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).CompareTag("mirror"))
+                        //{
+                        mirror.GetComponent<DefaultBlock>().activateMirror(gameObject);
+                        if (mirror.GetComponent<Box>().hasmoved)
+                            reset();
+                        //ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).GetComponent<MirrorBlock>().activateMirror(gameObject);
+                    }
+                    //else
+                    //{
+                    //    mirror.GetComponent<DefaultBlock>().activate();
+                    //    beamLock = true;
+                    //}
                 }
             }
-        }
-	}
+    }
+
+ 
+	
 
     public void reflect(Direction newDirection)
     {
@@ -138,6 +155,7 @@ public class Beam : DefaultBlock {
 
     public void reset()
     {
+        direction = directionInit;
         GetComponent<LineRenderer>().SetVertexCount(2);
         beamLock = false;
         deplacement = false;

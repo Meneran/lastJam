@@ -57,4 +57,8 @@ public class DefaultBlock : MonoBehaviour {
     {
 
     }
+    public virtual void activateMirror(GameObject beam)
+    {
+
+    }
 }

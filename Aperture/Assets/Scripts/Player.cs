@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         transform.position += new Vector3(0, offset, 0);
         timer = saveTimer;
         newPos = position;
+        Debug.Log("------" + MapManager.Instance.GetTile(9, 7).type);
     }
 
     // Update is called once per frame

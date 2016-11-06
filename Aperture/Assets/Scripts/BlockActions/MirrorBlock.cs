@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class MirrorBlock : DefaultBlock {
 
+    [SerializeField]
+    private float timer;
+    private float resetTimer;
     [SerializeField]
     private Direction direction1;
     [SerializeField]
@@ -13,15 +18,17 @@ public class MirrorBlock : DefaultBlock {
     private Direction direction1_opposite;
     private Direction direction2_opposite;
 
-    private GameObject lazerBeam;
+    private List<GameObject> lazerBeam = new List<GameObject>();
+    //private GameObject[] lazerBeam = new GameObject[2];
 
 	// Use this for initialization
 	void Start () {
+        resetTimer = timer;
         if (rotate)
         {
             transform.Rotate(new Vector3(0, 0, 1), 90);
         }
-        lazerBeam = null;
+        
         switch (direction1)
         {
             case Direction.UP :
@@ -56,12 +63,31 @@ public class MirrorBlock : DefaultBlock {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        timer -= Time.deltaTime;
+        if (timer < 0)
+        {
+            lazerBeam.Clear();
+            for (int k = 0; k < 30; ++k)
+            {
+                for (int l = 0; l < 30; ++l)
+                {
+                    if (ObjectManager.Instance.GetGameObject(k, l) != null)
+                    {
+                        if (ObjectManager.Instance.objectMatrix[k, l].type == ObjectType.Beam1 || ObjectManager.Instance.objectMatrix[k, l].type == ObjectType.Beam2)
+                        {
+                            lazerBeam.Add(ObjectManager.Instance.objectMatrix[k, l].gameObject);
+                        }
+                    }
+                }
+            }
+            timer = resetTimer;
+        }
+        
+    }
 
-    public void activateMirror(GameObject beam)
+    public override void activateMirror(GameObject beam)
     {
-        lazerBeam = beam;
+        //lazerBeam.Add(beam);
         Beam beamComponent = beam.GetComponent<Beam>();
         if(beamComponent.getLazerDirection() == direction1_opposite)
         {
@@ -83,10 +109,11 @@ public class MirrorBlock : DefaultBlock {
 
     public override void activate()
     {
-        if(lazerBeam != null)
+        if(lazerBeam.Count > 0)
         {
-            lazerBeam.GetComponent<Beam>().reset();
-            lazerBeam = null;
+            for (int i = 0; i < lazerBeam.Count; ++i)
+                lazerBeam[i].GetComponent<Beam>().reset();
+            lazerBeam.Clear();
         }
     }
 }
