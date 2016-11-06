@@ -7,11 +7,13 @@ public class DefaultBlock : MonoBehaviour {
     public bool allowToPass;
     //[SerializeField]
     //protected bool isActive;
+    [SerializeField]
+    protected float rotate;
 
     // Use this for initialization
     void Start () {
-	
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
