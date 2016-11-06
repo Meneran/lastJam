@@ -51,7 +51,8 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
 
     public void PlaySound(Sound sIndex)
     {
-        if (GameManagerSc.instance.sound) { 
+        if (GameManagerSc.instance.sound) {
+            Debug.Log(sIndex);
         switch (sIndex)
         {
             case Sound.Laser:
@@ -88,7 +89,7 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
                 AddChannelForPlay(fSound[10]);
                 break;
             case Sound.Bip2:
-                AddChannelForPlay(fSound[11]);
+                AddChannelForPlay(fSound[11],0.57f);
                 break;
             case Sound.Bip3:
                 AddChannelForPlay(fSound[12]);
@@ -122,7 +123,7 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
     }
 
     // CREE CHANNEL ET LANCE LE SON ASSOCIE
-    void AddChannelForPlay(AudioClip audio)
+    void AddChannelForPlay(AudioClip audio,float myVol=0.25f)
     {
         GameObject go= new GameObject();
         DontDestroyOnLoad(go);
@@ -131,6 +132,7 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
         buff = go.AddComponent<AudioSource>();
         buff.clip = audio;
         buff.Play();
+        buff.volume = myVol;
     }
 
     // TUE LES CHANNELS DES QUE LE SON EST FINI
