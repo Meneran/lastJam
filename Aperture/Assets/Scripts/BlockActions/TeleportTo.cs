@@ -5,12 +5,13 @@ using System.Collections;
 
 public class TeleportTo : DefaultBlock {
 
+    public bool canTP;
     [SerializeField]
     private Vector2 target;
 
 	// Use this for initialization
 	void Start () {
-	    
+        canTP = false;
 	}
 	
 	// Update is called once per frame
@@ -20,12 +21,12 @@ public class TeleportTo : DefaultBlock {
 
     public override void activateOnWalk(GameObject player)
     {
-        bool canTP = true;
-        for (int i = 0; i < PlayerManager.Instance.playerArray.Length; ++i)
-        {
-            if (PlayerManager.Instance.getPlayerCoord(i) == target)
-                canTP = false;
-        }
+        //canTP = true;
+        //for (int i = 0; i < PlayerManager.Instance.playerArray.Length; ++i)
+        //{
+        //    if (PlayerManager.Instance.getPlayerCoord(i) == target)
+        //        canTP = false;
+        //}
         if (canTP)
         {
             player.GetComponent<Player>().position = target;
@@ -33,5 +34,19 @@ public class TeleportTo : DefaultBlock {
             player.GetComponent<Player>().newPos = target;
         }
 
+    }
+
+    public override void desactivate()
+    {
+        Debug.Log("desactivate");
+        Debug.Log(gameObject.transform.position / 0.16f);
+        canTP = false;
+    }
+
+    public override void activate()
+    {
+        Debug.Log("activate");
+        Debug.Log(gameObject.transform.position / 0.16f);
+        canTP = true;
     }
 }
