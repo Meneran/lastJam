@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\BlockActions\DefaultBlock.cs" />
      <Compile Include="Assets\Scripts\BlockActions\Door.cs" />
      <Compile Include="Assets\Scripts\BlockActions\EnnemyBlock.cs" />
+     <Compile Include="Assets\Scripts\BlockActions\FloorAction.cs" />
      <Compile Include="Assets\Scripts\BlockActions\MirrorBlock.cs" />
      <Compile Include="Assets\Scripts\BlockActions\RollingStairBlocks.cs" />
      <Compile Include="Assets\Scripts\BlockActions\TeleportTo.cs" />
@@ -64,6 +65,10 @@
      <Compile Include="Assets\Scripts\Intro\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Intro\OverlayManager.cs" />
      <Compile Include="Assets\Scripts\Intro\Paralax.cs" />
+     <Compile Include="Assets\Scripts\LevelSpecialScript\Level3\SpecialActivatorLvl3.cs" />
+     <Compile Include="Assets\Scripts\LevelSpecialScript\Level3\SpecialLvl3Door.cs" />
+     <Compile Include="Assets\Scripts\LevelSpecialScript\Level4\Level4Bridge.cs" />
+     <Compile Include="Assets\Scripts\LevelSpecialScript\Level4\Level4Door.cs" />
      <Compile Include="Assets\Scripts\Manager\GameManagerSc.cs" />
      <Compile Include="Assets\Scripts\Manager\InputManagerSc.cs" />
      <Compile Include="Assets\Scripts\Manager\MainManagerSc.cs" />
@@ -79,6 +84,8 @@
      <Compile Include="Assets\Scripts\Player1.cs" />
      <Compile Include="Assets\Scripts\Player2.cs" />
      <Compile Include="Assets\Scripts\PlayerManager\PlayerManager.cs" />
+     <Compile Include="Assets\Scripts\TextManager\TextManager.cs" />
+     <Compile Include="Assets\Scripts\TextManager\TextParallax.cs" />
      <None Include="Assets\Resources\Save\level_01.xml" />
      <None Include="Assets\Prefabs\Blocks\level_01.xml" />
      <None Include="Assets\Resources\Save\level_00.xml" />

@@ -57,7 +57,7 @@ public class Beam : DefaultBlock {
         deplacement = false;
         Xint_BeamPosition = Mathf.RoundToInt(BeamPosition.x);
         Yint_BeamPosition = Mathf.RoundToInt(BeamPosition.y);
-        if (!beamLock)
+        if(!beamLock)
         {
             switch (direction)
             {
