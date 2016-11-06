@@ -81,7 +81,7 @@ public class GameManagerSc : Singleton<GameManagerSc>
 		}
 	}
 
-    public void LoadSceneUnity(SceneUnity newScene, int lvl=0)
+    public void LoadSceneUnity(SceneUnity newScene)
     {
 		overlay = false;
         switch (newScene)
