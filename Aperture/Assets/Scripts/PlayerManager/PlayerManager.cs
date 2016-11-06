@@ -15,7 +15,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
 	public Vector2 getPlayerCoord(int i)
 	{
-		if (playerArray.Length > i)
+		if (2 > i)
 		{
 			return new Vector2(Mathf.Round(playerArray[i].transform.position.x/0.16f), Mathf.Round(playerArray[i].transform.position.y/0.16f));
 		}
