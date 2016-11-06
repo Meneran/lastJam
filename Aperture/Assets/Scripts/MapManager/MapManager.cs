@@ -47,6 +47,14 @@ public class MapManager : Singleton<MapManager>
 		return new Vector2((int)Mathf.Round(coord.x / 0.16f), (int)Mathf.Round(coord.y / 0.16f));
 	}
 
+	public void UpdateTile(int x, int y, TileType tileType)
+	{
+		if ((x >= 0) && (y >= 0) && (x < mapMatrix.Count) && (y < mapMatrix[0].Count))
+		{
+			mapMatrix[x][y].type = tileType;
+		}
+	}
+
 	void DisplayMap()
 	{
 		for (int x = 0; x < mapMatrix.Count; x++)
