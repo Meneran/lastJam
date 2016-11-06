@@ -3,10 +3,14 @@ using System.Collections;
 
 public class TextManager : MonoBehaviour {
 
+	public string clue;
+
 	void Start()
 	{
-		
-		CreateText("L'union fait la force...");
+		if (clue != "")
+		{
+			CreateText(clue);
+		}
 	}
 
 	// Use this for initialization
