@@ -9,6 +9,8 @@ public class Box : DefaultBlock {
     public Vector2 position;
     public Vector2 oldPos;
     // Use this for initialization
+    [SerializeField]
+    private bool level4;
     void Start () {
         transform.position = position * 0.16f;
         transform.position += new Vector3(0, offset, 0);
@@ -70,6 +72,16 @@ public class Box : DefaultBlock {
                     position += new Vector2(0, 1);
                     hasmoved = true;
                 }
+                /*else if (level4)
+                {
+                    Vector2 nextPos = MapManager.Instance.GetTileCoord(new Vector2((int)Mathf.Round(gameObject.transform.position.x / 0.16f), (int)Mathf.Round((gameObject.transform.position.y + 0.16f) / 0.16f)));
+                    if (nextPos == new Vector2(10, 8) || nextPos == new Vector2(10, 9) || nextPos == new Vector2(10, 9))
+                    {
+                        MapManager.Instance.GetTile((int)Mathf.Round(gameObject.transform.position.x / 0.16f), (int)Mathf.Round((gameObject.transform.position.y + 0.16f) / 0.16f)).sprite = 5;
+                        MapManager.Instance.GetTile((int)Mathf.Round(gameObject.transform.position.x / 0.16f), (int)Mathf.Round((gameObject.transform.position.y + 0.16f) / 0.16f)).type = TileType.Floor;
+                        Destroy(gameObject);
+                    }
+                }*/
                 break;
             case Direction.LEFT:
                 if (MapManager.Instance.GetTile((int)Mathf.Round((gameObject.transform.position.x - 0.16f) / 0.16f), (int)Mathf.Round(gameObject.transform.position.y / 0.16f)).type == TileType.Floor)
