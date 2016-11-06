@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Generic\Singleton.cs" />
      <Compile Include="Assets\Scripts\Generic\XmlHelpers.cs" />
      <Compile Include="Assets\Scripts\Grab.cs" />
+     <Compile Include="Assets\Scripts\Intro\Crossfade.cs" />
      <Compile Include="Assets\Scripts\Intro\FloatingLogo.cs" />
      <Compile Include="Assets\Scripts\Intro\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Intro\OverlayManager.cs" />
@@ -69,6 +70,7 @@
      <Compile Include="Assets\Scripts\LevelSpecialScript\Level3\SpecialLvl3Door.cs" />
      <Compile Include="Assets\Scripts\LevelSpecialScript\Level4\Level4Bridge.cs" />
      <Compile Include="Assets\Scripts\LevelSpecialScript\Level4\Level4Door.cs" />
+     <Compile Include="Assets\Scripts\LevelSpecialScript\Level6\lightonActive.cs" />
      <Compile Include="Assets\Scripts\Manager\GameManagerSc.cs" />
      <Compile Include="Assets\Scripts\Manager\InputManagerSc.cs" />
      <Compile Include="Assets\Scripts\Manager\MainManagerSc.cs" />
@@ -86,6 +88,7 @@
      <Compile Include="Assets\Scripts\PlayerManager\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\TextManager\TextManager.cs" />
      <Compile Include="Assets\Scripts\TextManager\TextParallax.cs" />
+     <Compile Include="Assets\Scripts\level1_teleport.cs" />
      <None Include="Assets\Resources\Save\level_01.xml" />
      <None Include="Assets\Prefabs\Blocks\level_01.xml" />
      <None Include="Assets\Resources\Save\level_00.xml" />

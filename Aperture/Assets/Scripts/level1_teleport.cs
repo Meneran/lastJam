@@ -12,7 +12,7 @@ public class level1_teleport : MonoBehaviour {
     // Use this for initialization
     void Start () {
         teleport1 = ObjectManager.Instance.GetGameObject(0, 0);
-        teleport2 = ObjectManager.Instance.GetGameObject();
+        //teleport2 = ObjectManager.Instance.GetGameObject();
         switch1 = ObjectManager.Instance.GetGameObject(0, 0);
         switch2 = ObjectManager.Instance.GetGameObject(0, 0);
         switch3 = ObjectManager.Instance.GetGameObject(0, 0);
