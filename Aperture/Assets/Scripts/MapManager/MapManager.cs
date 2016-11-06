@@ -33,7 +33,7 @@ public class MapManager : Singleton<MapManager>
 		}
 		else
 		{
-			return new Tile(-1, TileType.Ceil);
+			return new Tile(-1, TileType.Ceil, null);
 		}
 	}
 
@@ -65,16 +65,16 @@ public class MapManager : Singleton<MapManager>
 
 				if (type >= 0)
 				{
-					GameObject tempTile = new GameObject("Tile");
+					mapMatrix[x][y].gameObject = new GameObject("Tile");
 
-					tempTile.transform.parent = mapHolder.transform;
-					tempTile.AddComponent<SpriteRenderer>();
+					mapMatrix[x][y].gameObject.transform.parent = mapHolder.transform;
+					mapMatrix[x][y].gameObject.AddComponent<SpriteRenderer>();
 
-					tempTile.transform.position = new Vector3(x * 0.16f, y * 0.16f, 0);
+					mapMatrix[x][y].gameObject.transform.position = new Vector3(x * 0.16f, y * 0.16f, 0);
 
 					Rect tileRect = findRect(x, y);
 
-					tempTile.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tileSet[type].sprite, tileRect, new Vector2(0.5f, 0.5f));
+					mapMatrix[x][y].gameObject.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tileSet[type].sprite, tileRect, new Vector2(0.5f, 0.5f));
 				}
 			}
 		}
