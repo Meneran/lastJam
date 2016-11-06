@@ -38,15 +38,12 @@ public class TeleportTo : DefaultBlock {
 
     public override void desactivate()
     {
-        Debug.Log("desactivate");
-        Debug.Log(gameObject.transform.position / 0.16f);
+
         canTP = false;
     }
 
     public override void activate()
     {
-        Debug.Log("activate");
-        Debug.Log(gameObject.transform.position / 0.16f);
         canTP = true;
     }
 }
