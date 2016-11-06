@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum StateMenu
-{
-	Start,
-	LevelSelector,
-	Options
-};
+
 
 public class MenuManager : MonoBehaviour {
+
+	public enum StateMenu
+	{
+		Start,
+		LevelSelector,
+		Options
+	};
 
 	public int selectedMenu;
 
