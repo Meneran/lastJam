@@ -8,7 +8,7 @@ public class Paralax : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		this.GetComponent<MeshRenderer>().sortingOrder = 100;
 	}
 
 	// Update is called once per frame

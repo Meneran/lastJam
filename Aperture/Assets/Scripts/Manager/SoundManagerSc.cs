@@ -51,51 +51,51 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
 
     public void PlaySound(Sound sIndex)
     {
-        if (GameManagerSc.Instance.sound)
+        if (GameManagerSc.instance.sound) {
+            Debug.Log(sIndex);
+        switch (sIndex)
         {
-            switch (sIndex)
-            {
-                case Sound.Laser:
-                    AddChannelForPlay(fSound[0]);
-                    break;
-                case Sound.Door:
-                    AddChannelForPlay(fSound[1]);
-                    break;
-                case Sound.RollingStair:
-                    AddChannelForPlay(fSound[2]);
-                    break;
-                case Sound.ClickOn:
-                    AddChannelForPlay(fSound[3]);
-                    break;
-                case Sound.ClickOff:
-                    AddChannelForPlay(fSound[4]);
-                    break;
-                case Sound.Push:
-                    AddChannelForPlay(fSound[5]);
-                    break;
-                case Sound.Footsteps:
-                    AddChannelForPlay(fSound[6]);
-                    break;
-                case Sound.Break:
-                    AddChannelForPlay(fSound[7]);
-                    break;
-                case Sound.Fail:
-                    AddChannelForPlay(fSound[8]);
-                    break;
-                case Sound.R2D2talk:
-                    AddChannelForPlay(fSound[9]);
-                    break;
-                case Sound.Bip1:
-                    AddChannelForPlay(fSound[10]);
-                    break;
-                case Sound.Bip2:
-                    AddChannelForPlay(fSound[11]);
-                    break;
-                case Sound.Bip3:
-                    AddChannelForPlay(fSound[12]);
-                    break;
-            }
+            case Sound.Laser:
+                AddChannelForPlay(fSound[0]);
+                break;
+            case Sound.Door:
+                AddChannelForPlay(fSound[1]);
+                break;
+            case Sound.RollingStair:
+                AddChannelForPlay(fSound[2]);
+                break;
+            case Sound.ClickOn:
+                AddChannelForPlay(fSound[3]);
+                break;
+            case Sound.ClickOff:
+                AddChannelForPlay(fSound[4]);
+                break;
+            case Sound.Push:
+                AddChannelForPlay(fSound[5]);
+                break;
+            case Sound.Footsteps:
+                AddChannelForPlay(fSound[6]);
+                break;
+            case Sound.Break:
+                AddChannelForPlay(fSound[7]);
+                break;
+            case Sound.Fail:
+                AddChannelForPlay(fSound[8]);
+                break;
+            case Sound.R2D2talk:
+                AddChannelForPlay(fSound[9]);
+                break;
+            case Sound.Bip1:
+                AddChannelForPlay(fSound[10]);
+                break;
+            case Sound.Bip2:
+                AddChannelForPlay(fSound[11],0.57f);
+                break;
+            case Sound.Bip3:
+                AddChannelForPlay(fSound[12]);
+                break;
         }
+    }
     }
 
     /// LINK GAME OBJECT SOUND et CHARGE MUSIC DE BASE
@@ -123,14 +123,16 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
     }
 
     // CREE CHANNEL ET LANCE LE SON ASSOCIE
-    void AddChannelForPlay(AudioClip audio)
+    void AddChannelForPlay(AudioClip audio,float myVol=0.25f)
     {
         GameObject go= new GameObject();
+        DontDestroyOnLoad(go);
         sources.Add(go);
         AudioSource buff;
         buff = go.AddComponent<AudioSource>();
         buff.clip = audio;
         buff.Play();
+        buff.volume = myVol;
     }
 
     // TUE LES CHANNELS DES QUE LE SON EST FINI
@@ -139,7 +141,7 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
         int i;
         if (sources.Count >= 1)
         {
-            for (i=0; i<sources.Count; i++)
+            for (i=0; i<=sources.Count-1; i++)
             {
                 if (!sources[i].GetComponent<AudioSource>().isPlaying)
                 {

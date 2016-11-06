@@ -95,7 +95,8 @@ public class GameManagerSc : Singleton<GameManagerSc>
 					if (levelScene[level] != "")
 					{
 						SceneManager.LoadScene(levelScene[level]);
-						break;
+                        SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Footsteps);
+                        break;
 					}
 				}
 

@@ -84,6 +84,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
     {
         if (isActive)
         {
+
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite2_whenDesactivated;
             isActive = false;
             if (activateOtherBlock)
@@ -105,6 +106,8 @@ public class ChangingTextureOnActivate : DefaultBlock {
 
     public override void activateOnWalk(GameObject player)
     {
+        if(!allowToPassOnActivate)
         changeState();
+        SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip1);
     }
 }

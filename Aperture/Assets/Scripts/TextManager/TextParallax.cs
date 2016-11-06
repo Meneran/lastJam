@@ -11,6 +11,7 @@ public class TextParallax : MonoBehaviour {
 	{
 		startTime = Time.time;
 		this.gameObject.transform.position = new Vector3(4, 1, 0);
+		this.GetComponent<MeshRenderer>().sortingOrder = 100;
 	}
 	
 	// Update is called once per frame
@@ -18,7 +19,7 @@ public class TextParallax : MonoBehaviour {
 	{
 		float transition = ((Time.time - startTime) / multiplier + 1f);
 
-		this.gameObject.transform.position = new Vector3(6 - 8 * sinTransition(transition), 0.1f, -0.5f);
+		this.gameObject.transform.position = new Vector3(6 - 8 * sinTransition(transition), 1f, -0.5f);
 
 		if (Mathf.Floor(transition) % 2 == 0)
 		{

@@ -134,7 +134,8 @@ public class Player1 : Player
     {
         if (InputManagerSc.Instance.act1P1)
         {
-            
+            SoundManagerSc.Instance.PlaySound(SoundManagerSc.Sound.Bip2);
+
             switch (direction)
             {
                 case (Direction.UP):

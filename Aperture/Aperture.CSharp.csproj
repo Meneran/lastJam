@@ -74,10 +74,12 @@
     <Compile Include="Assets\Scripts\BlockActions\DefaultBlock.cs" />
     <Compile Include="Assets\Scripts\BlockActions\Door.cs" />
     <Compile Include="Assets\Scripts\BlockActions\EnnemyBlock.cs" />
+    <Compile Include="Assets\Scripts\BlockActions\FloorAction.cs" />
     <Compile Include="Assets\Scripts\BlockActions\MirrorBlock.cs" />
     <Compile Include="Assets\Scripts\BlockActions\RollingStairBlocks.cs" />
     <Compile Include="Assets\Scripts\BlockActions\TeleportTo.cs" />
     <Compile Include="Assets\Scripts\DynamicObjectManager\DynamicObjectManager.cs" />
+    <Compile Include="Assets\Scripts\Generic\LayerOrder.cs" />
     <Compile Include="Assets\Scripts\Generic\Singleton.cs" />
     <Compile Include="Assets\Scripts\Generic\XmlHelpers.cs" />
     <Compile Include="Assets\Scripts\Grab.cs" />
@@ -90,7 +92,12 @@
     <Compile Include="Assets\Scripts\LevelSpecialScript\Level3\SpecialLvl3Door.cs" />
     <Compile Include="Assets\Scripts\LevelSpecialScript\Level4\Level4Bridge.cs" />
     <Compile Include="Assets\Scripts\LevelSpecialScript\Level4\Level4Door.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\LevelSpecialScript\Level5\Level5.cs" />
+=======
+    <Compile Include="Assets\Scripts\LevelSpecialScript\Level6\lightonActive.cs" />
+    <Compile Include="Assets\Scripts\LevelSpecific\Level7.cs" />
+>>>>>>> origin/master
     <Compile Include="Assets\Scripts\Manager\GameManagerSc.cs" />
     <Compile Include="Assets\Scripts\Manager\InputManagerSc.cs" />
     <Compile Include="Assets\Scripts\Manager\MainManagerSc.cs" />
