@@ -9,7 +9,9 @@ public class OverlayManager : MonoBehaviour
 
 	public Sprite sound_on;
 	public Sprite sound_off;
-	
+
+	private float lastAction;
+
 	private int nBtn;
 
 	// Use this for initialization
@@ -23,30 +25,44 @@ public class OverlayManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.DownArrow))
+		lastAction -= Time.deltaTime;
+
+		if (lastAction < 0)
 		{
-			OnLeave(std_object[selectedMenu]);
-			selectedMenu = (selectedMenu + 1) % nBtn;
-			OnSelect(std_object[selectedMenu]);
+			lastAction = 0;
 		}
 
-		if (Input.GetKeyDown(KeyCode.UpArrow))
+		if (lastAction <= 0)
 		{
-			OnLeave(std_object[selectedMenu]);
-			selectedMenu = (selectedMenu + nBtn - 1) % nBtn;
-			OnSelect(std_object[selectedMenu]);
-		}
 
-		if (Input.GetKeyDown(KeyCode.Return))
-		{
-			OnLeave(std_object[selectedMenu]);
-			ExecuteAction(1);
-		}
+			if (InputManagerSc.Instance.downP1)
+			{
+				OnLeave(std_object[selectedMenu]);
+				selectedMenu = (selectedMenu + 1) % nBtn;
+				OnSelect(std_object[selectedMenu]);
+				Action();
+			}
 
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			ExecuteAction(0);
+			if (InputManagerSc.Instance.upP1)
+			{
+				OnLeave(std_object[selectedMenu]);
+				selectedMenu = (selectedMenu + nBtn - 1) % nBtn;
+				OnSelect(std_object[selectedMenu]);
+				Action();
+			}
+
+			if (InputManagerSc.Instance.act1P1)
+			{
+				OnLeave(std_object[selectedMenu]);
+				ExecuteAction(1);
+				Action();
+			}
 		}
+	}
+
+	void Action()
+	{
+		lastAction = 0.2f;
 	}
 
 	void OnSelect(GameObject btn_object)

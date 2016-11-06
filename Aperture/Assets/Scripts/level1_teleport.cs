@@ -11,12 +11,20 @@ public class level1_teleport : MonoBehaviour {
     public GameObject switch3;
     // Use this for initialization
     void Start () {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         teleport1 = ObjectManager.Instance.GetGameObject(7, 9);
         teleport2 = ObjectManager.Instance.GetGameObject(12, 9);
         switch1 = ObjectManager.Instance.GetGameObject(18, 3);
         switch2 = ObjectManager.Instance.GetGameObject(6, 3);
         switch3 = ObjectManager.Instance.GetGameObject(12, 3);
         door = ObjectManager.Instance.GetGameObject(18, 12);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     }
 	
 	// Update is called once per frame

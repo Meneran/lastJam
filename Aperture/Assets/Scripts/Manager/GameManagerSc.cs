@@ -18,6 +18,8 @@ public class GameManagerSc : Singleton<GameManagerSc>
 
 	private Object overlayObject;
 
+	private float lastAction;
+
     public enum SceneUnity
     {
         ManagerScene,
@@ -50,15 +52,31 @@ public class GameManagerSc : Singleton<GameManagerSc>
 
 	void Update()
 	{
-		if ((Input.GetKeyDown(KeyCode.Escape)) && (currentScene != SceneUnity.MenuScene))
+		lastAction -= Time.deltaTime;
+
+		if (lastAction < 0)
 		{
-			overlay = !overlay;
-			LoadOverlay(overlay);
+			lastAction = 0;
+		}
+
+		if (lastAction <= 0)
+		{
+			if ((InputManagerSc.Instance.act2P1) && (currentScene != SceneUnity.MenuScene))
+			{
+				overlay = !overlay;
+				LoadOverlay(overlay);
+				Action();
+			}
 		}
 	}
 
-    //Initializes the game for each level.
-    void InitGameManager()
+	void Action()
+	{
+		lastAction = 0.2f;
+	}
+
+	//Initializes the game for each level.
+	void InitGameManager()
     {
         Debug.Log("GameManager initialized");
         InitFirstScene();

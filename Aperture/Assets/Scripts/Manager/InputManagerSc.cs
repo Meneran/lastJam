@@ -81,8 +81,10 @@ public class InputManagerSc : Singleton<InputManagerSc> {
 			downP2 = Input.GetAxis("YAxis2") > 0;
 
 			act1P1 = Input.GetButton("Action1P1");
-
 			act1P2 = Input.GetButton("Action1P2");
+
+			act2P1 = Input.GetButton("Action2P1");
+			act2P2 = Input.GetButton("Action2P2");
 		}
     }
 }
