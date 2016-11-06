@@ -22,10 +22,6 @@ public class MirrorBlock : DefaultBlock {
 	// Use this for initialization
 	void Start () {
         resetTimer = timer;
-        if (rotate)
-        {
-            transform.Rotate(new Vector3(0, 0, 1), 90);
-        }
         
         switch (direction1)
         {
