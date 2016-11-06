@@ -18,7 +18,12 @@ public class Player1 : Player
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
-            if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
+            for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+            {
+                if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                    newPos = position;
+            }
+        if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
                 newPos = position;
         }
         if (InputManagerSc.Instance.leftP1)
@@ -32,6 +37,11 @@ public class Player1 : Player
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
+            for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+            {
+                if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                    newPos = position;
+            }
             if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
                 newPos = position;
         }
@@ -46,6 +56,11 @@ public class Player1 : Player
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
+            for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+            {
+                if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                    newPos = position;
+            }
             if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
                 newPos = position;
         }
@@ -60,6 +75,11 @@ public class Player1 : Player
             if (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y) != null && (ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>() != null))
                 if ((!ObjectManager.Instance.GetGameObject((int)newPos.x, (int)newPos.y).GetComponent<DefaultBlock>().getPassing()))
                     newPos = position;
+            for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+            {
+                if (DynamicObjectManager.Instance.getObjectCoord(i) == newPos)
+                    newPos = position;
+            }
             if (PlayerManager.Instance.getPlayerCoord(1) == newPos)
                 newPos = position;
         }
@@ -69,15 +89,44 @@ public class Player1 : Player
     {
         if (InputManagerSc.Instance.act1P1)
         {
-            switch(direction)
+            
+            switch (direction)
             {
                 case (Direction.UP):
+                    for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+                    {
+                        if (DynamicObjectManager.Instance.getObjectCoord(i) == new Vector2(position.x, position.y + 1))
+                        {
+                            DynamicObjectManager.Instance.objectArray[i].GetComponent<Box>().activateByPlayer(direction);
+                        }
+                    }
                     break;
                 case (Direction.DOWN):
+                    for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+                    {
+                        if (DynamicObjectManager.Instance.getObjectCoord(i) == new Vector2(position.x, position.y - 1))
+                        {
+                            DynamicObjectManager.Instance.objectArray[i].GetComponent<Box>().activateByPlayer(direction);
+                        }
+                    }
                     break;
                 case (Direction.LEFT):
+                    for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+                    {
+                        if (DynamicObjectManager.Instance.getObjectCoord(i) == new Vector2(position.x - 1, position.y))
+                        {
+                            DynamicObjectManager.Instance.objectArray[i].GetComponent<Box>().activateByPlayer(direction);
+                        }
+                    }
                     break;
                 case (Direction.RIGHT):
+                    for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
+                    {
+                        if (DynamicObjectManager.Instance.getObjectCoord(i) == new Vector2(position.x + 1, position.y))
+                        {
+                            DynamicObjectManager.Instance.objectArray[i].GetComponent<Box>().activateByPlayer(direction);
+                        }
+                    }
                     break;
             }
         }

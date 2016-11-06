@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BlockActions\Activator.cs" />
     <Compile Include="Assets\Scripts\BlockActions\Beam.cs" />
+    <Compile Include="Assets\Scripts\BlockActions\Box.cs" />
     <Compile Include="Assets\Scripts\BlockActions\ChangingTextureOnActivate.cs" />
     <Compile Include="Assets\Scripts\BlockActions\Conveyor.cs" />
     <Compile Include="Assets\Scripts\BlockActions\DefaultBlock.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Scripts\BlockActions\MirrorBlock.cs" />
     <Compile Include="Assets\Scripts\BlockActions\RollingStairBlocks.cs" />
     <Compile Include="Assets\Scripts\BlockActions\TeleportTo.cs" />
+    <Compile Include="Assets\Scripts\DynamicObjectManager\DynamicObjectManager.cs" />
     <Compile Include="Assets\Scripts\Generic\Singleton.cs" />
     <Compile Include="Assets\Scripts\Generic\XmlHelpers.cs" />
     <Compile Include="Assets\Scripts\Grab.cs" />

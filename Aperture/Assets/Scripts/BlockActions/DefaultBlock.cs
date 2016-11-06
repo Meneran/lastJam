@@ -52,4 +52,9 @@ public class DefaultBlock : MonoBehaviour {
     {
 
     }
+
+    public virtual void activateByPlayer(Direction direction)
+    {
+
+    }
 }
