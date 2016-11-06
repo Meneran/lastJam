@@ -3,33 +3,44 @@ using System.Collections;
 
 public class level1_teleport : MonoBehaviour {
 
-    public GameObject door;
-    public GameObject teleport1;
-    public GameObject teleport2;
-    public GameObject switch1;
-    public GameObject switch2;
-    public GameObject switch3;
+    private GameObject door;
+    private GameObject teleport1;
+    private GameObject teleport2;
+    private GameObject switch1;
+    private GameObject switch2;
+    private GameObject switch3;
     // Use this for initialization
     void Start () {
-        teleport1 = ObjectManager.Instance.GetGameObject(0, 0);
-        teleport2 = ObjectManager.Instance.GetGameObject();
-        switch1 = ObjectManager.Instance.GetGameObject(0, 0);
-        switch2 = ObjectManager.Instance.GetGameObject(0, 0);
-        switch3 = ObjectManager.Instance.GetGameObject(0, 0);
-        door = ObjectManager.Instance.GetGameObject(0, 0);
+        teleport1 = ObjectManager.Instance.GetGameObject(7, 9);
+        teleport2 = ObjectManager.Instance.GetGameObject(12, 9);
+        switch1 = ObjectManager.Instance.GetGameObject(18, 3);
+        switch2 = ObjectManager.Instance.GetGameObject(6, 3);
+        switch3 = ObjectManager.Instance.GetGameObject(12, 3);
+        door = ObjectManager.Instance.GetGameObject(18, 12);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (switch1.GetComponent<ChangingTextureOnActivate>().isActive)
-            teleport1.GetComponent<ChangingTextureOnActivate>().activate();
+
+        teleport1 = ObjectManager.Instance.GetGameObject(7, 9);
+        teleport2 = ObjectManager.Instance.GetGameObject(12, 9);
+        switch1 = ObjectManager.Instance.GetGameObject(18, 3);
+        switch2 = ObjectManager.Instance.GetGameObject(6, 3);
+        switch3 = ObjectManager.Instance.GetGameObject(12, 3);
+        door = ObjectManager.Instance.GetGameObject(18, 12);
+
+        if (PlayerManager.Instance.getPlayerCoord(0) == new Vector2(18, 3))
+        {
+            teleport1.GetComponent<TeleportTo>().activate();
+
+        }
         else 
-            teleport1.GetComponent<ChangingTextureOnActivate>().desactivate();
+            teleport1.GetComponent<TeleportTo>().desactivate();
 
         if (switch2.GetComponent<ChangingTextureOnActivate>().isActive)
-            teleport2.GetComponent<ChangingTextureOnActivate>().activate();
+            teleport2.GetComponent<TeleportTo>().activate();
         else
-            teleport2.GetComponent<ChangingTextureOnActivate>().desactivate();
+            teleport2.GetComponent<TeleportTo>().desactivate();
 
         if (switch3.GetComponent<ChangingTextureOnActivate>().isActive)
             door.GetComponent<ChangingTextureOnActivate>().activate();

@@ -51,21 +51,24 @@ public class ObjectManager : Singleton<ObjectManager>
 
 	public GameObject GetGameObject(int x, int y)
 	{
-		if ((x >= 0) && (y >= 0) && (x < objectMatrix.GetLength(0)) && (y < objectMatrix.GetLength(1)))
-		{
-			if (objectMatrix[x, y].set)
-			{
-				return objectMatrix[x, y].gameObject;
-			}
-			else
-			{
-				return null;
-			}
-		}
-		else
-		{
-			return null;
-		}
+        if (objectMatrix != null)
+            if ((x >= 0) && (y >= 0) && (x < objectMatrix.GetLength(0)) && (y < objectMatrix.GetLength(1)))
+            {
+                if (objectMatrix[x, y].set)
+                {
+                    return objectMatrix[x, y].gameObject;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        else
+            return null;
 	}
 	
 	public ObjectType GetTypeObject(int x, int y)
