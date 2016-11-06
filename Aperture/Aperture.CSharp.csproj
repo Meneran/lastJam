@@ -85,6 +85,13 @@
     <Compile Include="Assets\Scripts\Intro\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Intro\OverlayManager.cs" />
     <Compile Include="Assets\Scripts\Intro\Paralax.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Assets\Scripts\LevelSpecialScript\Level3\SpecialActivatorLvl3.cs" />
+    <Compile Include="Assets\Scripts\LevelSpecialScript\Level3\SpecialLvl3Door.cs" />
+    <Compile Include="Assets\Scripts\LevelSpecialScript\Level4\Level4Bridge.cs" />
+    <Compile Include="Assets\Scripts\LevelSpecialScript\Level4\Level4Door.cs" />
+>>>>>>> origin/master
     <Compile Include="Assets\Scripts\Manager\GameManagerSc.cs" />
     <Compile Include="Assets\Scripts\Manager\InputManagerSc.cs" />
     <Compile Include="Assets\Scripts\Manager\MainManagerSc.cs" />
