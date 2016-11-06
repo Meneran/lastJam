@@ -13,6 +13,7 @@ public class Beam : DefaultBlock {
     private Vector3 Zoffset = new Vector3(0, 0, -0.5f);
     private bool deplacement;
     private bool beamLock;
+    private GameObject activatedItem;
 
     [SerializeField]
     private Sprite[] spriteArray;
@@ -103,31 +104,44 @@ public class Beam : DefaultBlock {
             }
         }
         if (deplacement)
-
+        {
             for (int i = 0; i < DynamicObjectManager.Instance.objectArray.Length; ++i)
             {
-
-
                 if (DynamicObjectManager.Instance.getObjectCoord(i) == new Vector2(Xint_BeamPosition, Yint_BeamPosition))
                 {
                     GameObject mirror = DynamicObjectManager.Instance.objectArray[i];
                     //GameObject mirror = ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition);
                     if (mirror != null)
                     {
-                        //if (ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).CompareTag("mirror"))
-                        //{
-                        mirror.GetComponent<DefaultBlock>().activateMirror(gameObject);
-                        if (mirror.GetComponent<Box>().hasmoved)
-                            reset();
-                        //ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).GetComponent<MirrorBlock>().activateMirror(gameObject);
+                        if (mirror.CompareTag("mirror"))
+                        {
+                            mirror.GetComponent<DefaultBlock>().activateMirror(gameObject);
+                            if (mirror.GetComponent<Box>().hasmoved)
+                                reset();
+                        }
                     }
-                    //else
-                    //{
-                    //    mirror.GetComponent<DefaultBlock>().activate();
-                    //    beamLock = true;
-                    //}
                 }
             }
+            //if (ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).GetComponent<ChangingTextureOnActivate>() != null)
+            //    ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition).GetComponent<DefaultBlock>().activate();
+            //DynamicObjectManager.Instance.objectArray[i].GetComponent<DefaultBlock>().activate();
+            //beamLock = true;
+            GameObject other = ObjectManager.Instance.GetGameObject(Xint_BeamPosition, Yint_BeamPosition);
+            if (other != null)
+            {
+                if (!other.CompareTag("mirror"))
+                {
+                    if (ObjectManager.Instance.GetTypeObject(Xint_BeamPosition, Yint_BeamPosition) == ObjectType.Light)
+                    {
+                        beamLock = true;    
+                        other.GetComponent<DefaultBlock>().activate();
+                        activatedItem = other;
+                    }
+                }
+                deplacement = false;
+            }
+        }
+            
     }
 
  
@@ -155,6 +169,11 @@ public class Beam : DefaultBlock {
 
     public void reset()
     {
+        if (activatedItem != null)
+        {
+            activatedItem.GetComponent<DefaultBlock>().desactivate();
+            activatedItem = null;
+        }
         direction = directionInit;
         GetComponent<LineRenderer>().SetVertexCount(2);
         beamLock = false;
