@@ -24,7 +24,7 @@ public class TextParallax : MonoBehaviour {
 		if (Mathf.Floor(transition) % 2 == 0)
 		{
 			float transparency = Mathf.Pow(Mathf.Max(sinTransition(2 * transition) * 2f - 1f, 0), 2);
-			this.gameObject.GetComponent<TextMesh>().color = new Color(57 / 255f, 77 / 255f, 88 / 255f, transparency * 0.75f);
+			this.gameObject.GetComponent<TextMesh>().color = new Color(25 / 255f, 35 / 255f, 45 / 255f, transparency);
 		}
 		else
 		{
