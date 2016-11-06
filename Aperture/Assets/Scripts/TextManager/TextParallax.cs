@@ -4,7 +4,7 @@ using System.Collections;
 public class TextParallax : MonoBehaviour {
 
 	private float startTime;
-	public float multiplier = 5f;
+	public float multiplier = 20f;
 
 	// Use this for initialization
 	void Start ()
