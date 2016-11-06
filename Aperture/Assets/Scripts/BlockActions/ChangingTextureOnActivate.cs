@@ -105,6 +105,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
 
     public override void activateOnWalk(GameObject player)
     {
+        if(!allowToPassOnActivate)
         changeState();
     }
 }
