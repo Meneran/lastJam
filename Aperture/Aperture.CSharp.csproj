@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\BlockActions\RollingStairBlocks.cs" />
     <Compile Include="Assets\Scripts\BlockActions\TeleportTo.cs" />
     <Compile Include="Assets\Scripts\DynamicObjectManager\DynamicObjectManager.cs" />
+    <Compile Include="Assets\Scripts\Generic\LayerOrder.cs" />
     <Compile Include="Assets\Scripts\Generic\Singleton.cs" />
     <Compile Include="Assets\Scripts\Generic\XmlHelpers.cs" />
     <Compile Include="Assets\Scripts\Grab.cs" />
