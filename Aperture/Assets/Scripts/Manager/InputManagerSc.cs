@@ -68,11 +68,6 @@ public class InputManagerSc : Singleton<InputManagerSc> {
 
     void UpdateInput()
     {
-		if ((Input.GetKeyDown(KeyCode.Escape)) && (GameManagerSc.Instance.currentScene != GameManagerSc.SceneUnity.MenuScene))
-		{
-			overlay = !overlay;
-		}
-
 		if (!overlay)
 		{
 			rightP1 = Input.GetAxis("XAxis1") > 0;
