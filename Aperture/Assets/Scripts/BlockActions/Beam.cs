@@ -131,8 +131,9 @@ public class Beam : DefaultBlock {
             {
                 if (!other.CompareTag("mirror"))
                 {
-                    if (ObjectManager.Instance.GetTypeObject(Xint_BeamPosition, Yint_BeamPosition) == ObjectType.Light)
-                    {
+                    if ((ObjectManager.Instance.GetTypeObject(Xint_BeamPosition, Yint_BeamPosition) == ObjectType.Light) || (ObjectManager.Instance.GetTypeObject(Xint_BeamPosition, Yint_BeamPosition) == ObjectType.Door))
+
+					{
                         beamLock = true;    
                         other.GetComponent<DefaultBlock>().activate();
                         activatedItem = other;
