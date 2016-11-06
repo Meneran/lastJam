@@ -8,12 +8,13 @@ using System.Threading;
 
 public class GameManagerSc : Singleton<GameManagerSc>
 {
-
     static public GameManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
     public int level = 0;
     public bool sound = true;
 	public SceneUnity currentScene;
 	public bool overlay;
+
+	public string[] levelScene;
 
 	private Object overlayObject;
 
@@ -88,6 +89,16 @@ public class GameManagerSc : Singleton<GameManagerSc>
         {
             case SceneUnity.LevelScene :
 				currentScene = newScene;
+
+				if (level < levelScene.Length)
+				{
+					if (levelScene[level] != "")
+					{
+						SceneManager.LoadScene(levelScene[level]);
+						break;
+					}
+				}
+
                 SceneManager.LoadScene("main");
                 break;
 
