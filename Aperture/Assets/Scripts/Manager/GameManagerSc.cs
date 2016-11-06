@@ -11,6 +11,7 @@ public class GameManagerSc : Singleton<GameManagerSc>
 
     static public GameManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
     public int level = 0;
+    public bool sound = true;
 	public SceneUnity currentScene;
 	public bool overlay;
 

@@ -39,6 +39,7 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
     void Update()
     {
         KillDeadChannel();
+        VerifySoundMute();
     }
 
     //Initializes the sound.
@@ -50,53 +51,57 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
 
     public void PlaySound(Sound sIndex)
     {
-        switch (sIndex)
+        if (GameManagerSc.Instance.sound)
         {
-            case Sound.Laser:
-                AddChannelForPlay(fSound[0]);
-                break;
-            case Sound.Door:
-                AddChannelForPlay(fSound[1]);
-                break;
-            case Sound.RollingStair:
-                AddChannelForPlay(fSound[2]);
-                break;
-            case Sound.ClickOn:
-                AddChannelForPlay(fSound[3]);
-                break;
-            case Sound.ClickOff:
-                AddChannelForPlay(fSound[4]);
-                break;
-            case Sound.Push:
-                AddChannelForPlay(fSound[5]);
-                break;
-            case Sound.Footsteps:
-                AddChannelForPlay(fSound[6]);
-                break;
-            case Sound.Break:
-                AddChannelForPlay(fSound[7]);
-                break;
-            case Sound.Fail:
-                AddChannelForPlay(fSound[8]);
-                break;
-            case Sound.R2D2talk:
-                AddChannelForPlay(fSound[9]);
-                break;
-            case Sound.Bip1:
-                AddChannelForPlay(fSound[10]);
-                break;
-            case Sound.Bip2:
-                AddChannelForPlay(fSound[11]);
-                break;
-            case Sound.Bip3:
-                AddChannelForPlay(fSound[12]);
-                break;
+            switch (sIndex)
+            {
+                case Sound.Laser:
+                    AddChannelForPlay(fSound[0]);
+                    break;
+                case Sound.Door:
+                    AddChannelForPlay(fSound[1]);
+                    break;
+                case Sound.RollingStair:
+                    AddChannelForPlay(fSound[2]);
+                    break;
+                case Sound.ClickOn:
+                    AddChannelForPlay(fSound[3]);
+                    break;
+                case Sound.ClickOff:
+                    AddChannelForPlay(fSound[4]);
+                    break;
+                case Sound.Push:
+                    AddChannelForPlay(fSound[5]);
+                    break;
+                case Sound.Footsteps:
+                    AddChannelForPlay(fSound[6]);
+                    break;
+                case Sound.Break:
+                    AddChannelForPlay(fSound[7]);
+                    break;
+                case Sound.Fail:
+                    AddChannelForPlay(fSound[8]);
+                    break;
+                case Sound.R2D2talk:
+                    AddChannelForPlay(fSound[9]);
+                    break;
+                case Sound.Bip1:
+                    AddChannelForPlay(fSound[10]);
+                    break;
+                case Sound.Bip2:
+                    AddChannelForPlay(fSound[11]);
+                    break;
+                case Sound.Bip3:
+                    AddChannelForPlay(fSound[12]);
+                    break;
+            }
         }
     }
 
     /// LINK GAME OBJECT SOUND et CHARGE MUSIC DE BASE
     void InitMusicBg()
     {
+
         sourceMusic = gameObject.GetComponent<AudioSource>();
         LoadMusic(music);
         MusicBg(true);
@@ -144,8 +149,15 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
                 }
             }
         }
+
     }
 
-
+    void VerifySoundMute()
+    {
+        if (sourceMusic.isPlaying != GameManagerSc.instance.sound)
+        {
+            MusicBg(GameManagerSc.instance.sound);
+        }
+    }
 
 }
