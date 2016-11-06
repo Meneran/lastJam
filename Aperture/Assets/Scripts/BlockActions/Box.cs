@@ -78,8 +78,8 @@ public class Box : DefaultBlock {
                     Debug.Log("On appel le else if" + nextPos);
                     if (nextPos == new Vector2(11, 8) || nextPos == new Vector2(11, 9) || nextPos == new Vector2(11, 10))
                     {
-                        MapManager.Instance.UpdateTile((int)nextPos.x, (int)nextPos.y, TileType.Box);
-                        MapManager.Instance.GetTile((int)Mathf.Round(gameObject.transform.position.x / 0.16f), (int)Mathf.Round((gameObject.transform.position.y + 0.16f) / 0.16f)).type = TileType.Floor;
+                        MapManager.Instance.GetTile((int)nextPos.x, (int)nextPos.y).gameObject.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
+                        MapManager.Instance.GetTile((int)nextPos.x, (int)nextPos.y).type = TileType.Floor;
                         position = new Vector2(100,100);
                     }
                 }
