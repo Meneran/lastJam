@@ -4,6 +4,7 @@ using System.Collections;
 public class TextParallax : MonoBehaviour {
 
 	private float startTime;
+	public float multiplier = 5f;
 
 	// Use this for initialization
 	void Start ()
@@ -15,9 +16,9 @@ public class TextParallax : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		float transition = ((Time.time - startTime) / 20f + 1f);
+		float transition = ((Time.time - startTime) / multiplier + 1f);
 
-		this.gameObject.transform.position = new Vector3(6 - 8 * sinTransition(transition), 1, 0);
+		this.gameObject.transform.position = new Vector3(6 - 8 * sinTransition(transition), 0.1f, -0.5f);
 
 		if (Mathf.Floor(transition) % 2 == 0)
 		{
