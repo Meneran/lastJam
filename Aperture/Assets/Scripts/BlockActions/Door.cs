@@ -9,7 +9,7 @@ public class Door : DefaultBlock {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
         gameObject.GetComponent<DefaultBlock>().allowToPass = gameObject.GetComponent<ChangingTextureOnActivate>().isActive;
         for (int i = 0; i < PlayerManager.Instance.playerArray.Length; ++i)
         {
