@@ -58,7 +58,7 @@ public class Beam : DefaultBlock {
             switch (direction)
             {
                 case Direction.UP:
-                    if (MapManager.Instance.GetTile(Xint_BeamPosition, Yint_BeamPosition + 1).type == TileType.Floor)
+                    if (MapManager.Instance.GetTile(Xint_BeamPosition, Yint_BeamPosition + 1).type != TileType.Wall)
                     {
                         deplacement = true;
                         BeamPosition.y += 1;
@@ -68,7 +68,7 @@ public class Beam : DefaultBlock {
                     }
                     break;
                 case Direction.DOWN:
-                    if (MapManager.Instance.GetTile(Xint_BeamPosition, Yint_BeamPosition - 1).type == TileType.Floor)
+                    if (MapManager.Instance.GetTile(Xint_BeamPosition, Yint_BeamPosition - 1).type != TileType.Wall)
                     {
                         deplacement = true;
                         BeamPosition.y -= 1;
@@ -78,7 +78,7 @@ public class Beam : DefaultBlock {
                     }
                     break;
                 case Direction.RIGHT:
-                    if (MapManager.Instance.GetTile(Xint_BeamPosition + 1, Yint_BeamPosition).type == TileType.Floor)
+                    if (MapManager.Instance.GetTile(Xint_BeamPosition + 1, Yint_BeamPosition).type != TileType.Wall)
                     {
                         deplacement = true;
                         BeamPosition.x += 1;
@@ -88,7 +88,7 @@ public class Beam : DefaultBlock {
                     }
                     break;
                 case Direction.LEFT:
-                    if (MapManager.Instance.GetTile(Xint_BeamPosition - 1, Yint_BeamPosition).type == TileType.Floor)
+                    if (MapManager.Instance.GetTile(Xint_BeamPosition - 1, Yint_BeamPosition).type != TileType.Wall)
                     {
                         deplacement = true;
                         BeamPosition.x -= 1;

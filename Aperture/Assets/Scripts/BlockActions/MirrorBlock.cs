@@ -7,6 +7,8 @@ public class MirrorBlock : DefaultBlock {
     private Direction direction1;
     [SerializeField]
     private Direction direction2;
+    [SerializeField]
+    private bool rotate;
 
     private Direction direction1_opposite;
     private Direction direction2_opposite;
@@ -15,6 +17,10 @@ public class MirrorBlock : DefaultBlock {
 
 	// Use this for initialization
 	void Start () {
+        if (rotate)
+        {
+            transform.Rotate(new Vector3(0, 0, 1), 90);
+        }
         lazerBeam = null;
         switch (direction1)
         {

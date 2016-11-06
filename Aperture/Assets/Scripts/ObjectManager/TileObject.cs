@@ -5,14 +5,19 @@ using System.Xml.Serialization;
 
 public enum ObjectType
 {
+	Default,
 	Light,
 	Switch,
 	Box,
 	Teleporter,
-    Beam,
-    Mirror,
+    Beam1,
+    Beam2,
+    Mirror1,
+    Mirror2,
+    Mirror3,
+    Mirror4,
     Door,
-    DoorPivoted
+    DoorPivoted,
 }
 
 [System.Serializable]
