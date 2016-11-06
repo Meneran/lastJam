@@ -29,7 +29,7 @@ public class InputManagerSc : Singleton<InputManagerSc> {
     public bool act3P2 = false;
     public bool act4P2 = false;
 
-
+	public bool overlay = false;
 
     //Awake is always called before any Start functions
     void Awake()
@@ -68,20 +68,27 @@ public class InputManagerSc : Singleton<InputManagerSc> {
 
     void UpdateInput()
     {
+		if ((Input.GetKeyDown(KeyCode.Escape)) && (GameManagerSc.Instance.currentScene != GameManagerSc.SceneUnity.MenuScene))
+		{
+			overlay = !overlay;
+		}
 
-        rightP1 = Input.GetAxis("XAxis1") > 0;
-        leftP1 = Input.GetAxis("XAxis1") < 0;
-        upP1 = Input.GetAxis("YAxis1") > 0;
-        downP1 = Input.GetAxis("YAxis1") < 0;
+		if (!overlay)
+		{
+			rightP1 = Input.GetAxis("XAxis1") > 0;
+			leftP1 = Input.GetAxis("XAxis1") < 0;
+			upP1 = Input.GetAxis("YAxis1") > 0;
+			downP1 = Input.GetAxis("YAxis1") < 0;
 
-        rightP2 = Input.GetAxis("XAxis2") > 0;
-        leftP2 = Input.GetAxis("XAxis2") < 0;
-        upP2 = Input.GetAxis("YAxis2") < 0;
-        downP2 = Input.GetAxis("YAxis2") > 0;
+			rightP2 = Input.GetAxis("XAxis2") > 0;
+			leftP2 = Input.GetAxis("XAxis2") < 0;
+			upP2 = Input.GetAxis("YAxis2") < 0;
+			downP2 = Input.GetAxis("YAxis2") > 0;
 
-        act1P1 = Input.GetButton("Action1P1");
+			act1P1 = Input.GetButton("Action1P1");
 
-        act1P2 = Input.GetButton("Action1P2");
+			act1P2 = Input.GetButton("Action1P2");
+		}
     }
 }
 

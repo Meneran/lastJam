@@ -12,8 +12,6 @@ public class MirrorBlock : DefaultBlock {
     private Direction direction1;
     [SerializeField]
     private Direction direction2;
-    [SerializeField]
-    private bool rotate;
 
     private Direction direction1_opposite;
     private Direction direction2_opposite;

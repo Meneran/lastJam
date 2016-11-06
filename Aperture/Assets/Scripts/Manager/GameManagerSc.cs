@@ -11,6 +11,10 @@ public class GameManagerSc : Singleton<GameManagerSc>
 
     static public GameManagerSc instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
     public int level = 0;
+	public SceneUnity currentScene;
+	public bool overlay;
+
+	private Object overlayObject;
 
     public enum SceneUnity
     {
@@ -42,6 +46,15 @@ public class GameManagerSc : Singleton<GameManagerSc>
         InitGameManager();
     }
 
+	void Update()
+	{
+		if ((Input.GetKeyDown(KeyCode.Escape)) && (currentScene != SceneUnity.MenuScene))
+		{
+			overlay = !overlay;
+			LoadOverlay(overlay);
+		}
+	}
+
     //Initializes the game for each level.
     void InitGameManager()
     {
@@ -54,23 +67,40 @@ public class GameManagerSc : Singleton<GameManagerSc>
         LoadSceneUnity(SceneUnity.MenuScene);
     }
 
+	public static void LoadOverlay(bool overlay)
+	{
+		if (overlay)
+		{
+			Debug.Log("Display overlay");
+			GameManagerSc.Instance.overlayObject = Instantiate(Resources.Load("generic/Overlay"));
+		}
+		else
+		{
+			Destroy(GameManagerSc.Instance.overlayObject);
+		}
+	}
+
     public void LoadSceneUnity(SceneUnity newScene, int lvl=0)
     {
+		overlay = false;
         switch (newScene)
         {
             case SceneUnity.LevelScene :
+				currentScene = newScene;
                 SceneManager.LoadScene("main");
-
                 break;
 
             case SceneUnity.MenuScene :
+				currentScene = newScene;
                 SceneManager.LoadScene("intro");
                 break;
 
             case SceneUnity.ManagerScene:
+				currentScene = newScene;
                 SceneManager.LoadScene("ManagerScene");
                 break;
             case SceneUnity.MeneranScene:
+				currentScene = newScene;
                 SceneManager.LoadScene("Meneran");
                 break;
         }

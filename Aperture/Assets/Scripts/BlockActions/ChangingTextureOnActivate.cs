@@ -27,6 +27,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
 
     // Use this for initialization
     void Start () {
+        transform.Rotate(new Vector3(0, 0, 1), rotate);
         if (isActive)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;

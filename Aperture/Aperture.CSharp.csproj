@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Grab.cs" />
     <Compile Include="Assets\Scripts\Intro\FloatingLogo.cs" />
     <Compile Include="Assets\Scripts\Intro\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\Intro\OverlayManager.cs" />
     <Compile Include="Assets\Scripts\Intro\Paralax.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManagerSc.cs" />
     <Compile Include="Assets\Scripts\Manager\InputManagerSc.cs" />
