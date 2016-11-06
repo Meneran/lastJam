@@ -7,8 +7,6 @@ public class OverlayManager : MonoBehaviour
 	public int selectedMenu;
 	public GameObject[] std_object;
 
-	public bool soundState;
-
 	public Sprite sound_on;
 	public Sprite sound_off;
 	
@@ -18,7 +16,6 @@ public class OverlayManager : MonoBehaviour
 	void Start()
 	{
 		selectedMenu = 0;
-		soundState = true;
 		nBtn = std_object.Length;
 		OnSelect(std_object[selectedMenu]);
 	}
@@ -72,8 +69,8 @@ public class OverlayManager : MonoBehaviour
 					GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.LevelScene);
 					break;
 				case 1:
-					soundState = !soundState;
-					if (soundState)
+					GameManagerSc.Instance.sound = !GameManagerSc.Instance.sound;
+					if (GameManagerSc.Instance.sound)
 					{
 						std_object[1].GetComponent<SpriteRenderer>().sprite = sound_on;
 					}
