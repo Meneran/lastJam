@@ -139,10 +139,10 @@ public class MapManager : Singleton<MapManager>
 				cFloor = TileType.Void;
 			}
 
-			TileType cBack = TileType.Ceil;
+			TileType cCeil = TileType.Ceil;
 			if (type == TileType.WallVoid)
 			{
-				cBack = TileType.Floor;
+				cCeil = TileType.Floor;
 			}
 
 			TileType[] nearTile = new TileType[4];
@@ -157,22 +157,22 @@ public class MapManager : Singleton<MapManager>
 
 			// Check Wall
 
-			if ((nearTile[0] == type) && (nearTile[2] == type) && (nearTile[1] >= cFloor))
+			if ((nearTile[0] == type) && (nearTile[2] == type) && ((nearTile[1] >= cFloor) || (nearTile[3] <= cCeil)))
 			{
 				xTex = 4;
 				yTex = 0;
 			}
-			else if ((nearTile[0] == type) && (nearTile[2] == type) && (nearTile[3] >= cFloor))
+			else if ((nearTile[0] == type) && (nearTile[2] == type) && ((nearTile[3] >= cFloor) || (nearTile[1] <= cCeil)))
 			{
 				xTex = 4;
 				yTex = 1;
 			}
-			else if ((nearTile[1] == type) && (nearTile[3] == type) && (nearTile[0] >= cFloor))
+			else if ((nearTile[1] == type) && (nearTile[3] == type) && ((nearTile[0] >= cFloor) || (nearTile[2] <= cCeil)))
 			{
 				xTex = 5;
 				yTex = 1;
 			}
-			else if ((nearTile[1] == type) && (nearTile[3] == type) && (nearTile[2] >= cFloor))
+			else if ((nearTile[1] == type) && (nearTile[3] == type) && ((nearTile[2] >= cFloor) || (nearTile[0] <= cCeil)))
 			{
 				xTex = 5;
 				yTex = 0;
@@ -180,22 +180,22 @@ public class MapManager : Singleton<MapManager>
 
 			// Check Corner
 
-			else if ((nearTile[0] == type) && (nearTile[1] == type) && (nearTile[2] <= cBack))
+			else if ((nearTile[0] == type) && (nearTile[1] == type) && (nearTile[2] <= cCeil))
 			{
 				xTex = 2;
 				yTex = 1;
 			}
-			else if ((nearTile[1] == type) && (nearTile[2] == type) && (nearTile[3] <= cBack))
+			else if ((nearTile[1] == type) && (nearTile[2] == type) && (nearTile[3] <= cCeil))
 			{
 				xTex = 2;
 				yTex = 0;
 			}
-			else if ((nearTile[2] == type) && (nearTile[3] == type) && (nearTile[0] <= cBack))
+			else if ((nearTile[2] == type) && (nearTile[3] == type) && (nearTile[0] <= cCeil))
 			{
 				xTex = 3;
 				yTex = 0;
 			}
-			else if ((nearTile[3] == type) && (nearTile[0] == type) && (nearTile[1] <= cBack))
+			else if ((nearTile[3] == type) && (nearTile[0] == type) && (nearTile[1] <= cCeil))
 			{
 				xTex = 3;
 				yTex = 1;
