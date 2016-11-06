@@ -22,7 +22,7 @@ public class ChangingTextureOnActivate : DefaultBlock {
     //public bool allowToPass;
     [SerializeField]
     public bool isActive;
-
+    public bool allowToPassOnActivate;
 
 
     // Use this for initialization
@@ -31,18 +31,27 @@ public class ChangingTextureOnActivate : DefaultBlock {
         if (isActive)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite1_whenActivated;
+
         }
         else
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite2_whenDesactivated;
+
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
+        VerifyActiveandAllowPass();
 	}
 
+    void VerifyActiveandAllowPass()
+    {
+        if (allowToPassOnActivate)
+        {
+            this.allowToPass = isActive;
+        }
+    }
     public override void activate() {
         if (!isActive)
         {
@@ -53,12 +62,13 @@ public class ChangingTextureOnActivate : DefaultBlock {
                 if (ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate) != null)
                     ObjectManager.Instance.GetGameObject(XposOfBlockToActivate, YposOfBlockToActivate).GetComponent<DefaultBlock>().activate();
             }
+
         }
     }
-
+    
     public override void desactivate()
     {
-        if(isActive)
+        if (isActive)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = sprite2_whenDesactivated;
             isActive = false;
