@@ -23,6 +23,33 @@ public class Door : DefaultBlock {
                         GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.LevelScene);
                     }
                 }
+            if (new Vector2(transform.position.x, transform.position.y + 0.16f) / 0.16f == PlayerManager.Instance.getPlayerCoord(i))
+            {
+                if (PlayerManager.Instance.playerArray[i].GetComponent<Player>().direction == Direction.DOWN)
+                {
+                    //PlayerManager.Instance.playerArray[i].GetComponent<Player>()
+                    GameManagerSc.Instance.level++;
+                    GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.LevelScene);
+                }
+            }
+            if (new Vector2(transform.position.x - 0.16f, transform.position.y) / 0.16f == PlayerManager.Instance.getPlayerCoord(i))
+            {
+                if (PlayerManager.Instance.playerArray[i].GetComponent<Player>().direction == Direction.RIGHT)
+                {
+                    //PlayerManager.Instance.playerArray[i].GetComponent<Player>()
+                    GameManagerSc.Instance.level++;
+                    GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.LevelScene);
+                }
+            }
+            if (new Vector2(transform.position.x + 0.16f, transform.position.y) / 0.16f == PlayerManager.Instance.getPlayerCoord(i))
+            {
+                if (PlayerManager.Instance.playerArray[i].GetComponent<Player>().direction == Direction.LEFT)
+                {
+                    //PlayerManager.Instance.playerArray[i].GetComponent<Player>()
+                    GameManagerSc.Instance.level++;
+                    GameManagerSc.Instance.LoadSceneUnity(GameManagerSc.SceneUnity.LevelScene);
+                }
+            }
 
         }
     }
