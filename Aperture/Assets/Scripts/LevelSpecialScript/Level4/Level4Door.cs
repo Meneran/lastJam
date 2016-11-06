@@ -16,8 +16,9 @@ public class Level4Door : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(light1.GetComponent<ChangingTextureOnActivate>().isActive && light1.GetComponent<ChangingTextureOnActivate>().isActive)
+	    if(light1.GetComponent<ChangingTextureOnActivate>().isActive && light2.GetComponent<ChangingTextureOnActivate>().isActive)
         {
+            Debug.Log("activation");
             door.GetComponent<ChangingTextureOnActivate>().activate();
         } else
         {

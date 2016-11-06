@@ -7,7 +7,8 @@ public enum TileType
 	Wall,
 	Floor,
 	WallVoid,
-	Void
+	Void,
+    Box
 }
 
 public class Tile

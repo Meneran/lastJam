@@ -72,16 +72,17 @@ public class Box : DefaultBlock {
                     position += new Vector2(0, 1);
                     hasmoved = true;
                 }
-                /*else if (level4)
+                else if (level4)
                 {
-                    Vector2 nextPos = MapManager.Instance.GetTileCoord(new Vector2((int)Mathf.Round(gameObject.transform.position.x / 0.16f), (int)Mathf.Round((gameObject.transform.position.y + 0.16f) / 0.16f)));
-                    if (nextPos == new Vector2(10, 8) || nextPos == new Vector2(10, 9) || nextPos == new Vector2(10, 9))
+                    Vector2 nextPos = new Vector2(position.x, position.y + 1);
+                    Debug.Log("On appel le else if" + nextPos);
+                    if (nextPos == new Vector2(11, 8) || nextPos == new Vector2(11, 9) || nextPos == new Vector2(11, 10))
                     {
-                        MapManager.Instance.GetTile((int)Mathf.Round(gameObject.transform.position.x / 0.16f), (int)Mathf.Round((gameObject.transform.position.y + 0.16f) / 0.16f)).sprite = 5;
+                        MapManager.Instance.UpdateTile((int)nextPos.x, (int)nextPos.y, TileType.Box);
                         MapManager.Instance.GetTile((int)Mathf.Round(gameObject.transform.position.x / 0.16f), (int)Mathf.Round((gameObject.transform.position.y + 0.16f) / 0.16f)).type = TileType.Floor;
-                        Destroy(gameObject);
+                        position = new Vector2(100,100);
                     }
-                }*/
+                }
                 break;
             case Direction.LEFT:
                 if (MapManager.Instance.GetTile((int)Mathf.Round((gameObject.transform.position.x - 0.16f) / 0.16f), (int)Mathf.Round(gameObject.transform.position.y / 0.16f)).type == TileType.Floor)
