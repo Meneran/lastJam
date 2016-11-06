@@ -107,6 +107,7 @@
     <Compile Include="Assets\Scripts\PlayerManager\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\TextManager\TextManager.cs" />
     <Compile Include="Assets\Scripts\TextManager\TextParallax.cs" />
+    <Compile Include="Assets\Scripts\level1_teleport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Prefabs\Blocks\level_01.xml" />
