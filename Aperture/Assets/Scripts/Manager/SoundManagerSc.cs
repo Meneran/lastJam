@@ -74,7 +74,7 @@ public class SoundManagerSc : Singleton<SoundManagerSc>
                 AddChannelForPlay(fSound[5]);
                 break;
             case Sound.Footsteps:
-                AddChannelForPlay(fSound[6]);
+                AddChannelForPlay(fSound[6], 0.1f);
                 break;
             case Sound.Break:
                 AddChannelForPlay(fSound[7]);
